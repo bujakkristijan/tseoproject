@@ -33,28 +33,33 @@ public class Test implements Serializable{
 	@Column(nullable = true)
 	private Date dateCreated;
 	
-	
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
 	@ManyToOne
     private Course course;
 	
+	@ManyToOne
+    private User user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	@JsonBackReference
 	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER, cascade=CascadeType.REFRESH)
 	private List<UserTest> userTests= new ArrayList<UserTest>();
 	
 	Test() {}
 	
-	public Test(Long id, String title, String description, Date dateCreated, Course course, List<UserTest> userTests) {
+	public Test(Long id, String title, String description, Date dateCreated, Course course, User user, List<UserTest> userTests) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.dateCreated = dateCreated;
 		this.course = course;
+		this.user = user;
 		this.userTests = userTests;
 	}
 
@@ -100,6 +105,9 @@ public class Test implements Serializable{
 	
 	public Date getDateCreated() {
 		return dateCreated;
+	}
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	

@@ -54,6 +54,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<UserCourse> userCourses= new ArrayList<UserCourse>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Test> tests= new ArrayList<Test>();
+	
 	public User() {}
 	
 	public User(String name, String surname, String indexNum, String email, String password, Role role) {
@@ -68,6 +72,14 @@ public class User implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<Test> getTests() {
+		return tests;
+	}
+
+	public void setTests(List<Test> tests) {
+		this.tests = tests;
 	}
 
 	public void setId(Long id) {

@@ -18,29 +18,26 @@ public class UserCourse {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
 	private Course course;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
 	private User user;
 
 	@Column(nullable = true)
 	private Date dateAdded;
 	
-	@Column(nullable = true)
-	private String note;
-	
 	public UserCourse() {
 		super();
 	}
 	
-	public UserCourse(Long id, Course course, User user, Date dateAdded, String note) {
+	public UserCourse(Long id, Course course, User user, Date dateAdded) {
 		super();
 		this.id = id;
 		this.course = course;
 		this.user = user;
 		this.dateAdded = dateAdded;
-		this.note = note;
+
 	}
 	
 	
@@ -77,19 +74,14 @@ public class UserCourse {
 		this.dateAdded = dateAdded;
 	}
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	
-	
 	@Override
 	public String toString() {
-		return "UserCourse [id=" + id + ", course=" + course + ", user=" + user + ", dateAdded=" + dateAdded + ", note="
-				+ note + "]";
+		return "UserCourse [id=" + id + ", course=" + course + ", user=" + user + ", dateAdded=" + dateAdded + "]";
 	}
+
+	
+
+	
+	
+	
 }

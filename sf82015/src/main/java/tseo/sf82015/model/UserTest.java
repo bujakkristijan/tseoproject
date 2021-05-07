@@ -19,10 +19,10 @@ public class UserTest {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
 	private Test test;
 	
-	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
 	private User user;
 
 	@Column(nullable = true)

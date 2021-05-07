@@ -47,15 +47,15 @@ public class User implements Serializable {
 	private Role role;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<UserTest> userTests= new ArrayList<UserTest>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<UserCourse> userCourses= new ArrayList<UserCourse>();
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Test> tests= new ArrayList<Test>();
 	
 	public User() {}

@@ -18,10 +18,10 @@ public class UserCourse {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
 	private Course course;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
 	private User user;
 
 	@Column(nullable = true)

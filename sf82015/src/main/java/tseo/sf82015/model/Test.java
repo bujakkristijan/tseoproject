@@ -33,6 +33,9 @@ public class Test implements Serializable{
 	@Column(nullable = true)
 	private Date dateCreated;
 	
+	@Column(nullable = false) 
+	private int maxPoints;
+	
 	@ManyToOne
     private Course course;
 	
@@ -50,17 +53,26 @@ public class Test implements Serializable{
 	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER, cascade=CascadeType.REFRESH)
 	private List<UserTest> userTests= new ArrayList<UserTest>();
 	
-	Test() {}
+	public Test() {}
 	
-	public Test(Long id, String title, String description, Date dateCreated, Course course, User user, List<UserTest> userTests) {
+	public Test(Long id, String title, String description, Date dateCreated, int maxPoints, Course course, User user, List<UserTest> userTests) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.dateCreated = dateCreated;
+		this.maxPoints = maxPoints;
 		this.course = course;
 		this.user = user;
 		this.userTests = userTests;
+	}
+
+	public int getMaxPoints() {
+		return maxPoints;
+	}
+
+	public void setMaxPoints(int maxPoints) {
+		this.maxPoints = maxPoints;
 	}
 
 	public Long getId() {

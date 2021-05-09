@@ -35,11 +35,10 @@ public class UserTest {
 	private String note;
 	
 	public UserTest() {
-		super();
+		
 	}
 
 	public UserTest(Test test, User user, int grade, Date dateCreated, String note) {
-		super();
 		
 		this.test = test;
 		this.user = user;

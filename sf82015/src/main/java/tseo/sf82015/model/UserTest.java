@@ -23,13 +23,22 @@ public class UserTest {
 	private Test test;
 	
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
-	private User user;
+	private User userStudentSignedUp;
+	
+	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
+	private User userProfessorUpdate;
 
 	@Column(nullable = true)
-	private int grade;
+	private int points;
 	
 	@Column(nullable = true)
 	private Date dateCreated;
+	
+	@Column(nullable = true)
+	private Date dateUpdated;
+	
+	@Column(nullable = true)
+	private String status;
 	
 	@Column(nullable = true)
 	private String note;
@@ -38,13 +47,44 @@ public class UserTest {
 		
 	}
 
-	public UserTest(Test test, User user, int grade, Date dateCreated, String note) {
+	public UserTest(Test test, User userStudentSignedUp, User userProfessorUpdate,  int points, Date dateCreated, Date dateUpdated, String status, String note) {
 		
 		this.test = test;
-		this.user = user;
-		this.grade = grade;
+		this.userStudentSignedUp = userStudentSignedUp;
+		this.userProfessorUpdate = userProfessorUpdate;
+		this.points = points;
 		this.dateCreated = dateCreated;
+		this.dateUpdated = dateUpdated;
+		this.status = status;
 		this.note = note;
+	}
+
+	public User getUserProfessorUpdate() {
+		return userProfessorUpdate;
+	}
+
+	public void setUserProfessorUpdate(User userProfessorUpdate) {
+		this.userProfessorUpdate = userProfessorUpdate;
+	}
+
+	public void setDateUpdated(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
+	public Date getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpadted(Date dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Date getDateCreated() {
@@ -71,20 +111,21 @@ public class UserTest {
 		this.test = test;
 	}
 
-	public User getUser() {
-		return user;
+	
+	public User getUserStudentSignedUp() {
+		return userStudentSignedUp;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserStudentSignedUp(User userStudentSignedUp) {
+		this.userStudentSignedUp = userStudentSignedUp;
 	}
 
-	public int getGrade() {
-		return grade;
+	public int getPoints() {
+		return points;
 	}
 
-	public void setGrade(int grade) {
-		this.grade = grade;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 	public String getNote() {

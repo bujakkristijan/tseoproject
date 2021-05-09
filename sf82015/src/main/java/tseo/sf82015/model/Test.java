@@ -67,6 +67,7 @@ public class Test implements Serializable{
 		this.userTests = userTests;
 	}
 
+
 	public int getMaxPoints() {
 		return maxPoints;
 	}

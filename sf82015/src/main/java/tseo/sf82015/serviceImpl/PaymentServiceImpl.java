@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tseo.sf82015.model.Course;
 import tseo.sf82015.model.Payment;
 import tseo.sf82015.repository.PaymentRepository;
 import tseo.sf82015.service.PaymentService;
@@ -30,6 +31,15 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public Payment save(Payment payment) {
 		return paymentRepository.save(payment);
+	}
+	
+	@Override
+	public Payment delete(Payment payment) {
+		if(payment == null) 
+			throw new IllegalArgumentException("Attempt to delete non-existing course.");
+		
+		paymentRepository.delete(payment);
+		return payment;
 	}
 
 }

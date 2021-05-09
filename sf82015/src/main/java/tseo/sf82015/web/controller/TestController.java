@@ -76,10 +76,10 @@ public class TestController {
 		test.setMaxPoints(testDTO.getMaxPoints());
 		test.setCourse(testDTO.getCourse());
 		
-		course.getTests().add(test);
+		//course.getTests().add(test);
 		
 		
-		test.setUserTests(userTests);
+		//test.setUserTests(userTests);
 		
 		test = testService.save(test);
 		

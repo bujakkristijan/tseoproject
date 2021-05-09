@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import tseo.sf82015.model.UserCourse;
 import tseo.sf82015.model.UserTest;
-import tseo.sf82015.service.UserCourseService;
 import tseo.sf82015.service.UserTestService;
-import tseo.sf82015.web.dto.UserCourseDTO;
 import tseo.sf82015.web.dto.UserTestDTO;
 
 @RestController

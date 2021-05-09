@@ -25,7 +25,7 @@ public class UserTest {
 	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
 	private User userStudentSignedUp;
 	
-	@ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REFRESH)
+	@ManyToOne(fetch = FetchType.LAZY,cascade=CascadeType.REFRESH)
 	private User userProfessorUpdate;
 
 	@Column(nullable = true)

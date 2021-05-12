@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ import tseo.sf82015.model.Role;
 import tseo.sf82015.model.User;
 import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.UserDTO;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "api/admin")
 public class UserController {
@@ -52,7 +53,7 @@ public class UserController {
 	public ResponseEntity<List<UserDTO>> getStudents() {
 		List<User> users = userService.findAll();
 		List<User> students = new ArrayList<User>();
-		List<UserDTO> studentsDTO = new ArrayList<>();
+		List<UserDTO> studentsDTO = new ArrayList<UserDTO>();
 
 		if (users.equals(null))
 			return new ResponseEntity<List<UserDTO>>(HttpStatus.NOT_FOUND);

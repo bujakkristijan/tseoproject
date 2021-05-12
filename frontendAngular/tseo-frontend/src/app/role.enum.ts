@@ -1,0 +1,7 @@
+export enum Role {
+  ADMIN,
+  PROFESSOR,
+  TEACHING_ASISTANT,
+  DEMONSTRATOR,
+  STUDENT
+}

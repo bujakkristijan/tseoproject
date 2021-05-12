@@ -1,0 +1,22 @@
+<h2>Student list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Name </th>
+          <th> Surname </th>
+          <th> Index number </th>
+          <th> Email </th>
+          <th> Password </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let student of students">
+        <td>{{ student.name }}</td>
+        <td>{{ student.surname }}</td>
+        <td>{{ student.indexNum }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.password }}</td>
+
+      </tr>
+  </tbody>
+</table>

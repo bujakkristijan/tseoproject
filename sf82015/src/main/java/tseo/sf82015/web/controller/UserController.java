@@ -24,7 +24,7 @@ public class UserController {
 	
 	@Autowired
 	UserService userService;
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
 		if (userService.findOne(id) == null) {
@@ -110,7 +110,7 @@ public class UserController {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
 	}
-		
+	@CrossOrigin(origins = "http://localhost:4200")	
 	@RequestMapping(value = "/edit", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDTO> edit(@RequestBody UserDTO userDTO) {
 		User user = userService.findOne(userDTO.getId()); 

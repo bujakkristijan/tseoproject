@@ -3,12 +3,14 @@ import { CreateStudentComponent } from './create-student/create-student.componen
 import { StudentListComponent } from './student-list/student-list.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { StudentDetailsComponent } from './student-details/student-details.component';
 
 const routes: Routes = [
   {path: 'students', component: StudentListComponent},
   {path: '', redirectTo: 'students', pathMatch: "full"},
   {path: 'create-student', component: CreateStudentComponent},
-  {path: 'update-student/:id', component: UpdateStudentComponent}
+  {path: 'update-student/:id', component: UpdateStudentComponent},
+  {path: 'student-details/:id', component: StudentDetailsComponent}
 ];
 
 @NgModule({

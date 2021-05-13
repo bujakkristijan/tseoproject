@@ -9,9 +9,14 @@ import { User } from './user';
 export class StudentService {
 
   private baseUrl = "http://localhost:8080/api/admin/getStudents";
+
   constructor(private httpClient: HttpClient) { }
 
   getStudentsList(): Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseUrl}`);
+  }
+
+  createStudent(student: User): Observable<Object>{
+    return this.httpClient.post("http://localhost:8080/api/admin/addUser", student);
   }
 }

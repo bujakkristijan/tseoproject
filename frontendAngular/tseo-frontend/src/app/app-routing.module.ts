@@ -1,3 +1,4 @@
+import { UpdateProfessorComponent } from './update-professor/update-professor.component';
 import { CreateProfessorComponent } from './create-professor/create-professor.component';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
 import { UpdateStudentComponent } from './update-student/update-student.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'update-student/:id', component: UpdateStudentComponent},
   {path: 'student-details/:id', component: StudentDetailsComponent},
   {path: 'professors', component: ProfessorListComponent},
-  {path: 'create-professor', component: CreateProfessorComponent}
+  {path: 'create-professor', component: CreateProfessorComponent},
+  {path: 'update-professor/:id', component: UpdateProfessorComponent}
 
 ];
 

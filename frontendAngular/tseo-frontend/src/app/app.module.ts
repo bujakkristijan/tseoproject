@@ -11,7 +11,8 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 
 import { FormsModule } from '@angular/forms';
 import { ProfessorListComponent } from './professor-list/professor-list.component';
-import { CreateProfessorComponent } from './create-professor/create-professor.component'
+import { CreateProfessorComponent } from './create-professor/create-professor.component';
+import { UpdateProfessorComponent } from './update-professor/update-professor.component'
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CreateProfessorComponent } from './create-professor/create-professor.co
     StudentDetailsComponent,
     ProfessorListComponent,
     CreateProfessorComponent,
+    UpdateProfessorComponent,
 
   ],
   imports: [

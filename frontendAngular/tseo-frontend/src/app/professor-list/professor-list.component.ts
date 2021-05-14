@@ -23,8 +23,19 @@ export class ProfessorListComponent implements OnInit {
     })
   }
 
-  public goToCreateProfessor(){ // ne znam zasto more public da stoji, nece kad je private
+  goToCreateProfessor(){ // ne znam zasto more public da stoji, nece kad je private
     this.router.navigate(['create-professor']);
+  }
+
+  updateProfessor(id: number){
+    this.router.navigate(['update-professor', id]);
+  }
+
+  deleteProfessor(id: number){
+    this.professorService.deleteProfessor(id).subscribe(data =>{
+      this.getProfessors();
+    });
+    this.getProfessors();
   }
 
 

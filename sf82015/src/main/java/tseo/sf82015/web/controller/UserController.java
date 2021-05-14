@@ -123,6 +123,7 @@ public class UserController {
 		user.setIndexNum(userDTO.getIndexNum());
 		user.setPassword(userDTO.getPassword());
 		user.setEmail(userDTO.getEmail());
+		user.setRole(userDTO.getRole());
 		userService.save(user);// proveriti zasto ne more student = ...
 		
 		return new ResponseEntity<UserDTO>(new UserDTO(user), HttpStatus.OK);

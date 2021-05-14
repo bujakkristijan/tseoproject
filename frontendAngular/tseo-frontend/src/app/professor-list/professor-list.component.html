@@ -6,6 +6,7 @@
           <th> Surname </th>
           <th> Email </th>
           <th> Password </th>
+          <th> Role </th>
           <th> Actions </th>
       </tr>
   </thead>
@@ -15,7 +16,11 @@
         <td>{{ professor.surname }}</td>
         <td>{{ professor.email }}</td>
         <td>{{ professor.password }}</td>
-
+        <td>{{ professor.role }}</td>
+        <td>
+          <button (click) = "updateProfessor(professor.id)" class="btn btn-info"> Update </button>
+          <button (click) = "deleteProfessor(professor.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+        </td>
 
       </tr>
   </tbody>

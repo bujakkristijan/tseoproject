@@ -1,0 +1,51 @@
+<div class="col-md-6 offset-md-3"> <!--kako da se pomeri input pomocu bootstrap-->
+  <h3>Create professor</h3>
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+      <label> Name </label>
+      <input type="text" class="form-control" id = "name"
+        [(ngModel)] = "professor.name" name="name"> <!--importujem forms module u app.module.ts da bih mogao binding da koristim-->
+    </div>
+
+    <div class="form-group">
+      <label> Surname </label>
+      <input type="text" class="form-control" id = "surname"
+        [(ngModel)] = "professor.surname" name="surname">
+    </div>
+
+
+    <div class="form-group">
+      <label> Role </label>
+      <tr></tr>
+      <select name="ChooseRole" [(ngModel)] = "professor.role" name="role">
+        <option value="PROFESSOR">PROFESSOR</option>
+        <option value="TEACHING_ASSISTANT">TEACHING ASSISTANT</option>
+        <option value="DEMONSTRATOR">DEMONSTRATOR</option>
+
+      </select>
+      Current vaule is {{professor.role}}
+
+    </div>
+    <!--<div class="form-group">
+      <label> Index number </label>
+      <input type="text" class="form-control" id = "indexNum"
+        [(ngModel)] = "student.indexNum" name="indexNum">
+    </div> -->
+
+    <div class="form-group">
+      <label> Email </label>
+      <input type="text" class="form-control" id = "email"
+        [(ngModel)] = "professor.email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label> Password </label>
+      <input type="text" class="form-control" id = "password"
+        [(ngModel)] = "professor.password" name="password">
+    </div>
+
+    <button class="btn btn-success" type="submit"> Submit </button>
+
+  </form>
+  </div>

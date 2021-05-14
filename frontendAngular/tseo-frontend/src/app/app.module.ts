@@ -5,9 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StudentListComponent } from './student-list/student-list.component';
 import { CreateStudentComponent } from './create-student/create-student.component';
-import { FormsModule } from '@angular/forms';
+
 import { UpdateStudentComponent } from './update-student/update-student.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
+
+import { FormsModule } from '@angular/forms';
+import { ProfessorListComponent } from './professor-list/professor-list.component';
+import { CreateProfessorComponent } from './create-professor/create-professor.component'
 
 @NgModule({
   declarations: [
@@ -15,7 +19,10 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
     StudentListComponent,
     CreateStudentComponent,
     UpdateStudentComponent,
-    StudentDetailsComponent
+    StudentDetailsComponent,
+    ProfessorListComponent,
+    CreateProfessorComponent,
+
   ],
   imports: [
     BrowserModule,

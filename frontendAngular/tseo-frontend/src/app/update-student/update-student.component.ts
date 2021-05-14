@@ -27,6 +27,6 @@ export class UpdateStudentComponent implements OnInit {
   }
 
   goToStudentList(){
-    this.router.navigate(['/students'])
+    this.router.navigate(['/students']);
   }
 }

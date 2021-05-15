@@ -35,7 +35,7 @@ export class ProfessorListComponent implements OnInit {
     this.professorService.deleteProfessor(id).subscribe(data =>{
       this.getProfessors();
     });
-    this.getProfessors();
+    //this.getProfessors();
   }
 
 

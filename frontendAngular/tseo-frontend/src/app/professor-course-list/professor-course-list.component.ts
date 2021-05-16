@@ -21,11 +21,19 @@ export class ProfessorCourseListComponent implements OnInit {
   private getProfessorCourses(){
     this.professorCourseService.getProfessorCourseList().subscribe(data =>{
       this.professorCourses = data;
-    })
+    });
   }
 
   goToCreateProfessorCourse(){
     this.router.navigate(['create-professor-course']);
   }
+
+  deleteProfessorCourse(id: number){
+    this.professorCourseService.deleteProfessorCourse(id).subscribe(data =>{
+      this.getProfessorCourses();
+    });
+
+  }
+
 
 }

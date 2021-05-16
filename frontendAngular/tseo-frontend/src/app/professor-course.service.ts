@@ -20,4 +20,10 @@ export class ProfessorCourseService {
   createProfessorCourse(professorCourse: UserCourse): Observable<Object>{
     return this.httpClient.post("http://localhost:8080/userCourse/addUserCourse", professorCourse);
   }
+
+  deleteProfessorCourse(id: number){
+    return this.httpClient.delete("http://localhost:8080/userCourse/delete/"+id);
+
+    }
+
 }

@@ -15,6 +15,7 @@ export class CreateProfessorComponent implements OnInit {
   constructor(private professorService: ProfessorService, private router: Router) { }
 
   ngOnInit(): void {
+    this.professor.role = Role.PROFESSOR; // postavlja ulogu na default da bude profesor kada ga dodajem, da ne bude prazno posto je null
   }
 
   saveProfessor(){

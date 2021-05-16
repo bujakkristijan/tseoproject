@@ -22,8 +22,12 @@ export class CreateProfessorCourseComponent implements OnInit {
     private courseService: CourseService, private professorService: ProfessorService, private router: Router) { }
 
   ngOnInit(): void {
+
+
     this.getCourses();
     this.getProfessors();
+    //this.professorCourse.user = this.professors[0];  -- ne znam sto nece , proveriti posle
+    //this.professorCourse.course = this.courses[0];
     console.log(this.professors);
     console.log(this.courses);
   }

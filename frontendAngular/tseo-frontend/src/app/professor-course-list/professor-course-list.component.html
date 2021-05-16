@@ -1,0 +1,32 @@
+<h2>Professors on courses list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> Professor name</th>
+          <th> Professor role</th>
+          <th> Date added </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let professorCourse of professorCourses">
+        <td>{{ professorCourse.course.name }}</td>
+        <td>{{ professorCourse.user.name }}</td>
+        <td>{{ professorCourse.user.role }}</td>
+        <td>{{ professorCourse.dateAdded }}</td>
+
+        <td>
+        <!--
+          <button (click) = "updateCourse(course.id)" class="btn btn-info"> Update </button>
+          <button (click) = "deleteCourse(course.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+
+          <button (click) = "courseDetails(course.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
+          -->
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+<tr></tr>
+<button (click) = "goToCreateProfessorCourse()" class="btn btn-success"> Add new professor on course </button>

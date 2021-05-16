@@ -16,4 +16,13 @@ values (2, "002","Course description 2", "Programiranje", 3000);
 insert into sf82015.course (id, code, description, name, price) 
 values (3, "003","Course description 3", "Muzicko", 2500);
 
+insert into sf82015.user_course (id, date_added, course_id, user_id) 
+values (1, null, 1, 1);
+
+insert into sf82015.user_course (id, date_added, course_id, user_id) 
+values (2, null, 2, 1);
+
+insert into sf82015.user_course (id, date_added, course_id, user_id) 
+values (3, null, 1, 2);
+
 select * from sf82015.user;

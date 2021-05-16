@@ -17,6 +17,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { UpdateCourseComponent } from './update-course/update-course.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
+import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProfessorCourseListComponent } from './professor-course-list/professor-
     UpdateCourseComponent,
     CreateCourseComponent,
     ProfessorCourseListComponent,
+    CreateProfessorCourseComponent,
 
 
   ],

@@ -1,0 +1,30 @@
+<div class="col-md-6 offset-md-3"> <!--kako da se pomeri input pomocu bootstrap-->
+  <h3>Add professor on course</h3>
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+      <label> Choose professor </label>
+      <tr></tr>
+      <select name="ChooseProfessor" [(ngModel)] = "professorCourse.user">
+        <option *ngFor = "let professor of professors" [ngValue]= "professor">{{professor.name}} {{professor.surname}}, Role: {{professor.role}}</option>
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <label> Choose course </label>
+      <tr></tr>
+      <select name="ChooseCourse" [(ngModel)] = "professorCourse.course">
+        <option *ngFor = "let course of courses" [ngValue] = "course">{{course.name}}, Code: {{course.code}}</option> <!-- ngValue  moze i objekte a value samo stringove !!!!!!!!-->
+      </select>
+      <tr></tr>
+    </div>
+
+
+    <tr></tr>
+
+    <button class="btn btn-success" type="submit"> Submit </button>
+
+  </form>
+  </div>

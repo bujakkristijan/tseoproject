@@ -15,6 +15,7 @@ export class ProfessorCourseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfessorCourses();
+    console.log(this.professorCourses);
   }
 
   private getProfessorCourses(){
@@ -24,7 +25,7 @@ export class ProfessorCourseListComponent implements OnInit {
   }
 
   goToCreateProfessorCourse(){
-
+    this.router.navigate(['create-professor-course']);
   }
 
 }

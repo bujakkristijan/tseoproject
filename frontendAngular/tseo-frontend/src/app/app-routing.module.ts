@@ -1,3 +1,4 @@
+import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
 import { UserCourse } from './user-course';
 import { CreateCourseComponent } from './create-course/create-course.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'courses', component: CourseListComponent},
   {path: 'update-course/:id', component: UpdateCourseComponent},
   {path: 'create-course', component: CreateCourseComponent},
-  {path: 'professor-courses', component: ProfessorCourseListComponent}
+  {path: 'professor-courses', component: ProfessorCourseListComponent},
+  {path: 'create-professor-course', component: CreateProfessorCourseComponent}
 
 ];
 

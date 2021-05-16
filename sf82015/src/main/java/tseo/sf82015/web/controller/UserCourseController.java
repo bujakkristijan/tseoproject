@@ -1,6 +1,7 @@
 package tseo.sf82015.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import tseo.sf82015.model.Course;
+import tseo.sf82015.model.Role;
 import tseo.sf82015.model.UserCourse;
 import tseo.sf82015.service.CourseService;
 import tseo.sf82015.service.UserCourseService;
@@ -38,7 +40,7 @@ public class UserCourseController {
 		return new ResponseEntity<UserCourseDTO>(new UserCourseDTO(userCourse), HttpStatus.OK);
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/getUserCourses", method = RequestMethod.GET)
+	@RequestMapping(value = "/getProfessorsOnCourses", method = RequestMethod.GET)
 	public ResponseEntity<List<UserCourseDTO>> getUserCourses() {
 		List<UserCourse> userCourses = userCourseService.findAll();
 
@@ -47,21 +49,25 @@ public class UserCourseController {
 		
 		List<UserCourseDTO> userCoursesDTO = new ArrayList<UserCourseDTO>();
 		for (UserCourse uc : userCourses) {
-			userCoursesDTO.add(new UserCourseDTO(uc));
+			if(uc.getUser().getRole().equals(Role.PROFESSOR) || uc.getUser().getRole().equals(Role.DEMONSTRATOR)
+					|| uc.getUser().getRole().equals(Role.TEACHING_ASSISTANT)){
+				userCoursesDTO.add(new UserCourseDTO(uc));
+			}
+			
 		}
 		return new ResponseEntity<List<UserCourseDTO>>(userCoursesDTO, HttpStatus.OK);
 	}
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/addUserCourse", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserCourseDTO> addUserCourse(@RequestBody UserCourseDTO userCourseDTO) {
 		if(userCourseDTO == null) {
 			return new ResponseEntity<UserCourseDTO>(HttpStatus.BAD_REQUEST);
 		}
 		UserCourse userCourse = new UserCourse();
-		
+		System.out.println(userCourseDTO.getCourse().getName() + "/////" + userCourseDTO.getUser().getName());
 		userCourse.setCourse(userCourseDTO.getCourse());
 		userCourse.setUser(userCourseDTO.getUser()); 
-		userCourse.setDateAdded(userCourseDTO.getDateAdded());
+		userCourse.setDateAdded(new Date());
 		
 		userCourse = userCourseService.save(userCourse);
 		

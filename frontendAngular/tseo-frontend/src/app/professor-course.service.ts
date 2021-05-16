@@ -14,6 +14,10 @@ export class ProfessorCourseService {
   constructor(private httpClient: HttpClient) { }
 
   getProfessorCourseList(): Observable<UserCourse[]>{
-    return this.httpClient.get<UserCourse[]>("http://localhost:8080/userCourse/getUserCourses");
+    return this.httpClient.get<UserCourse[]>("http://localhost:8080/userCourse/getProfessorsOnCourses");
+  }
+
+  createProfessorCourse(professorCourse: UserCourse): Observable<Object>{
+    return this.httpClient.post("http://localhost:8080/userCourse/addUserCourse", professorCourse);
   }
 }

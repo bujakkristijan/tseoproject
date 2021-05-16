@@ -20,9 +20,9 @@ insert into sf82015.user_course (id, date_added, course_id, user_id)
 values (1, null, 1, 1);
 
 insert into sf82015.user_course (id, date_added, course_id, user_id) 
-values (2, null, 2, 1);
+values (2, null, 2, 3);
 
 insert into sf82015.user_course (id, date_added, course_id, user_id) 
-values (3, null, 1, 2);
+values (3, null, 1, 3);
 
 select * from sf82015.user;

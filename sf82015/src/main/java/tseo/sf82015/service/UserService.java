@@ -13,6 +13,9 @@ import tseo.sf82015.model.User;
 @Transactional
 public interface UserService {
 	
+	public void setCurrentUser(User user);
+    public User getCurrentUser();
+    
 	User findOne(Long id);
 	User findByEmail(String email);
 	User findByIndexNum(String indexNum);

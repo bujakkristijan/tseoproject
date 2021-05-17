@@ -1,9 +1,10 @@
 <h2>Professors on courses list</h2>
-<table class = "table table-striped">
+<table class = "table table-striped"> <!--class = "table table-striped"-->
   <thead>
       <tr>
           <th> Course </th>
           <th> Professor name</th>
+          <th> Professor surname</th>
           <th> Professor role</th>
           <th> Date added </th>
           <th> Actions </th>
@@ -13,6 +14,7 @@
       <tr *ngFor = "let professorCourse of professorCourses">
         <td>{{ professorCourse.course.name }}</td>
         <td>{{ professorCourse.user.name }}</td>
+        <td>{{ professorCourse.user.surname }}</td>
         <td>{{ professorCourse.user.role }}</td>
         <td>{{ professorCourse.dateAdded }}</td>
 

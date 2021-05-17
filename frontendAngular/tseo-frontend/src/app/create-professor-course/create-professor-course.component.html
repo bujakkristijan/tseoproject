@@ -6,7 +6,7 @@
       <label> Choose professor </label>
       <tr></tr>
       <select name="ChooseProfessor" [(ngModel)] = "professorCourse.user">
-        <option *ngFor = "let professor of professors" [ngValue]= "professor">{{professor.name}} {{professor.surname}}, Role: {{professor.role}}</option>
+        <option *ngFor = "let professor of professors" [ngValue]= "professor">Name: {{professor.name}} {{professor.surname}}, Role: {{professor.role}}</option>
       </select>
     </div>
 
@@ -16,7 +16,7 @@
       <label> Choose course </label>
       <tr></tr>
       <select name="ChooseCourse" [(ngModel)] = "professorCourse.course">
-        <option *ngFor = "let course of courses" [ngValue] = "course">{{course.name}}, Code: {{course.code}}</option> <!-- ngValue  moze i objekte a value samo stringove !!!!!!!!-->
+        <option *ngFor = "let course of courses" [ngValue] = "course">Name: {{course.name}}, Code: {{course.code}}</option> <!-- ngValue  moze i objekte a value samo stringove !!!!!!!!-->
       </select>
       <tr></tr>
     </div>

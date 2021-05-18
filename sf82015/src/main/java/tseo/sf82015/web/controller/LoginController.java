@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import tseo.sf82015.model.Course;
 import tseo.sf82015.model.User;
 import tseo.sf82015.service.UserService;
-import tseo.sf82015.web.dto.CourseDTO;
+
 import tseo.sf82015.web.dto.LoginDTO;
 import tseo.sf82015.web.dto.UserDTO;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/login")
 public class LoginController {
@@ -28,6 +29,12 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 	
+	
+	
+	
+	
+	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<LoginDTO> loginCheck(@RequestBody LoginDTO loginDTO) {
 		if(loginDTO == null)
@@ -43,19 +50,29 @@ public class LoginController {
 		
 		if (user.getPassword().equals(loginDTO.getPassword())) {
 			userService.setCurrentUser(user);
+			
+			//System.out.println("user za setovanje: " + user);
+			User getUser = userService.getCurrentUser();
+			//this.loggedUser = getUser;
+			userService.setLoggedUser(getUser);
+			System.out.println("uzer setovani: " + getUser);
+			
 			return new ResponseEntity<>(loginDTO, HttpStatus.OK);
 		} 
 				
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 	
-	@RequestMapping(value = "/getCurrentUserLoggedIn", method = RequestMethod.GET)
-	public ResponseEntity<UserDTO> getUser() {
-		User userLogged = userService.getCurrentUser();
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/getCurrentUserLoggedIn", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserDTO> getCurrentUserLoggedIn() {
+		//User userLogged = userService.getCurrentUser();
+		User userLogged = userService.getLoggedUser();
 		if (userLogged == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.NOT_FOUND);
 		}	
 		UserDTO userDTO = new UserDTO(userLogged);
+		System.out.println("Vraca ulogovanog usera: " + userDTO.getEmail() + " " + userDTO.getName());
 		
 	
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);

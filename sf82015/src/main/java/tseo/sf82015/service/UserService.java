@@ -16,6 +16,9 @@ public interface UserService {
 	public void setCurrentUser(User user);
     public User getCurrentUser();
     
+    public void setLoggedUser(User user);
+    public User getLoggedUser();
+    
 	User findOne(Long id);
 	User findByEmail(String email);
 	User findByIndexNum(String indexNum);

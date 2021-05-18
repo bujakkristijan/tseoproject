@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
 import { UserCourse } from './user-course';
@@ -17,7 +18,7 @@ import { StudentDetailsComponent } from './student-details/student-details.compo
 
 const routes: Routes = [
   {path: 'students', component: StudentListComponent},
-  {path: '', redirectTo: 'students', pathMatch: "full"},
+  {path: '', redirectTo: 'login', pathMatch: "full"},
   {path: 'create-student', component: CreateStudentComponent},
   {path: 'update-student/:id', component: UpdateStudentComponent},
   {path: 'student-details/:id', component: StudentDetailsComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'update-course/:id', component: UpdateCourseComponent},
   {path: 'create-course', component: CreateCourseComponent},
   {path: 'professor-courses', component: ProfessorCourseListComponent},
-  {path: 'create-professor-course', component: CreateProfessorCourseComponent}
+  {path: 'create-professor-course', component: CreateProfessorCourseComponent},
+  {path: 'login', component: LoginComponent}
 
 ];
 

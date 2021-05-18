@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tseo.sf82015.model.Role;
 import tseo.sf82015.model.User;
 import tseo.sf82015.service.UserService;
+import tseo.sf82015.web.dto.LoginDTO;
 import tseo.sf82015.web.dto.UserDTO;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -140,5 +141,10 @@ public class UserController {
 		userService.delete(user);
 		return new ResponseEntity<UserDTO>(HttpStatus.OK);
 	}
+	
+	
+	
+	
+
 
 }

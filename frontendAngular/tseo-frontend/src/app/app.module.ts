@@ -18,6 +18,7 @@ import { UpdateCourseComponent } from './update-course/update-course.component';
 import { CreateCourseComponent } from './create-course/create-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
 import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CreateProfessorCourseComponent } from './create-professor-course/create
     CreateCourseComponent,
     ProfessorCourseListComponent,
     CreateProfessorCourseComponent,
+    LoginComponent,
 
 
   ],

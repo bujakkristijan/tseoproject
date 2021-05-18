@@ -12,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationToken;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import tseo.sf82015.model.Role;
@@ -26,12 +27,18 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	UserRepository userRepository;
 	
+	
+	public User loggedUser;
+	
 	@Override
 	public void setCurrentUser(User user) {
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+		authorities.add(new SimpleGrantedAuthority(user.getRole().toString()));
 		Authentication authentication = new PreAuthenticatedAuthenticationToken(user.getId(), null, authorities);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		//Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		//Long id = Long.parseLong(auth.getName());
+		
 	}
 
 	@Override
@@ -43,6 +50,18 @@ public class UserServiceImpl implements UserService {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	@Override
+	public void setLoggedUser(User user) {
+		this.loggedUser = user;
+	}
+	
+	
+	
+	@Override
+	public User getLoggedUser() {
+		return this.loggedUser;
 	}
 	
 	@Override

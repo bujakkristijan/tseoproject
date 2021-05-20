@@ -49,8 +49,8 @@ public class UserCourseController {
 		
 		List<UserCourseDTO> userCoursesDTO = new ArrayList<UserCourseDTO>();
 		for (UserCourse uc : userCourses) {
-			if(uc.getUser().getRole().equals(Role.PROFESSOR) || uc.getUser().getRole().equals(Role.DEMONSTRATOR)
-					|| uc.getUser().getRole().equals(Role.TEACHING_ASSISTANT)){
+			if(uc.getUser().getRole().equals("PROFESSOR") || uc.getUser().getRole().equals("DEMONSTRATOR")
+					|| uc.getUser().getRole().equals("TEACHING_ASSISTANT")){
 				userCoursesDTO.add(new UserCourseDTO(uc));
 			}
 			

@@ -1,27 +1,39 @@
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a routerLink="students" routerLinkActive="active" class="nav-link">Student list</a>
+      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="students" routerLinkActive="active" class="nav-link">Student list</a>
     </li>
     <li class="nav-item">
-      <a routerLink="create-student" routerLinkActive="active" class="nav-link">Add student</a>
+      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="create-student" routerLinkActive="active" class="nav-link">Add student</a>
     </li>
     <li class="nav-item">
-      <a routerLink="professors" routerLinkActive="active" class="nav-link">Professor list</a>
+      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professors" routerLinkActive="active" class="nav-link">Professor list</a>
     </li>
     <li class="nav-item">
-      <a routerLink="courses" routerLinkActive="active" class="nav-link">Course list</a>
+      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="courses" routerLinkActive="active" class="nav-link">Course list</a>
     </li>
     <li class="nav-item">
-      <a routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
+      <a routerLink="courses" routerLinkActive="active" class="nav-link">Course list without check</a>
     </li>
     <!--
     <li class="nav-item">
-      <a *ngIf="loggedUser != null" class="nav-link">Logged user: {{loggedUser.email}}</a>
+      <a *ngIf="loggedUser.role.toString() == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
     </li>
   -->
     <li class="nav-item">
-      <a class = "nav-link">Logged user: {{loggedUser.email}}</a>
+      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payment-list" routerLinkActive="active" class="nav-link">My payments</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="loggedUser != null" class="nav-link">Logged user: {{loggedUser.role}}</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="loggedUser.role != 'SignOutRole'" (click)="signOut()" class="nav-link">Sign Out: {{loggedUser.role}}</a>
     </li>
 
   </ul>

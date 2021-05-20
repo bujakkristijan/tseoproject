@@ -19,7 +19,7 @@ export class CreateStudentComponent implements OnInit {
 
   saveStudent(){
 
-    this.student.role = Role.STUDENT;
+    this.student.role = "STUDENT";
     this.studentService.createStudent(this.student).subscribe(data =>{
       console.log(data);
       this.goToStudentList();

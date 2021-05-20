@@ -20,7 +20,8 @@ export class StudentListComponent implements OnInit {
   ngOnInit(): void {
     this.getStudents();
     this.loginService.getLoggedUser().subscribe(data =>{
-      this.logginUser = data;
+      //this.logginUser = data;
+      this.appComponent.loggedUser = data;
     });
     //this.appComponent.getLoggedUser();
   }

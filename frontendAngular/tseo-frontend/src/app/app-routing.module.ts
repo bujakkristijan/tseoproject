@@ -1,3 +1,4 @@
+import { MyPaymentListComponent } from './my-payment-list/my-payment-list.component';
 import { LoginComponent } from './login/login.component';
 import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'create-course', component: CreateCourseComponent},
   {path: 'professor-courses', component: ProfessorCourseListComponent},
   {path: 'create-professor-course', component: CreateProfessorCourseComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'my-payment-list', component: MyPaymentListComponent}
 
 ];
 

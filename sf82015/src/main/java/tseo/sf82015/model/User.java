@@ -42,9 +42,12 @@ public class User implements Serializable {
 	@Column(nullable = false) 
 	private String password;
 	
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	@Column(nullable = false) 
+	private String role;
+	
+	//@Column(nullable = false)
+	//@Enumerated(EnumType.STRING)
+	//private Role role;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "userStudentSignedUp", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
@@ -60,7 +63,7 @@ public class User implements Serializable {
 	
 	public User() {}
 	
-	public User(String name, String surname, String indexNum, String email, String password, Role role) {
+	public User(String name, String surname, String indexNum, String email, String password, String role) {
 		this.name = name;
 		this.surname = surname;
 		this.indexNum = indexNum;
@@ -126,11 +129,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

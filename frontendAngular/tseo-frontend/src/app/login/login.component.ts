@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginInput: Login = new Login();
+  //loginInput: Login;
   constructor(private loginService: LoginService, private router: Router, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.loginService.loginSendParams(this.loginInput).subscribe(data =>{
+
       this.goToStudentList();
 
     });

@@ -1,3 +1,4 @@
+import { Payment } from './payment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -32,5 +33,9 @@ export class StudentService {
 
   deleteStudent(id: number): Observable<Object>{
     return this.httpClient.delete("http://localhost:8080/api/admin/delete/"+id);
+  }
+
+  getMyPaymentList():Observable<Payment[]>{
+    return this.httpClient.get<Payment[]>("http://localhost:8080/payment/getMyPayments");
   }
 }

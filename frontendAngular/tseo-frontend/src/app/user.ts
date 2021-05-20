@@ -6,7 +6,7 @@ export class User {
   indexNum: string;
   email: string;
   password: string;
-  role: Role;
+  role: string;
 
 
 }

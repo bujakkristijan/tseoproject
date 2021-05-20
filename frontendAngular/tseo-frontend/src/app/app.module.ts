@@ -19,6 +19,7 @@ import { CreateCourseComponent } from './create-course/create-course.component';
 import { ProfessorCourseListComponent } from './professor-course-list/professor-course-list.component';
 import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 import { LoginComponent } from './login/login.component';
+import { MyPaymentListComponent } from './my-payment-list/my-payment-list.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { LoginComponent } from './login/login.component';
     ProfessorCourseListComponent,
     CreateProfessorCourseComponent,
     LoginComponent,
+    MyPaymentListComponent,
 
 
   ],

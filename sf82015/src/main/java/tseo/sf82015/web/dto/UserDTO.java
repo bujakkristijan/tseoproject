@@ -11,9 +11,9 @@ public class UserDTO {
 	private String indexNum;
 	private String email;
 	private String password;
-	private Role role;
+	private String role;
 	
-	public UserDTO(Long id, String name, String surname, String indexNum, String email, String password, Role role) {
+	public UserDTO(Long id, String name, String surname, String indexNum, String email, String password, String role) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
@@ -80,11 +80,11 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	

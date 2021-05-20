@@ -63,7 +63,7 @@ public class UserController {
 		//	if (users.get(i).getRole().equals(Role.STUDENT))
 		//		students.add(users.get(i));
 		for(User us: users) {
-			if(us.getRole().equals(Role.STUDENT)) {
+			if(us.getRole().equals("STUDENT")) {
 				studentsDTO.add(new UserDTO(us));
 			}
 		}
@@ -81,7 +81,7 @@ public class UserController {
 	
 		
 		for(User us: users) {
-			if(us.getRole().equals(Role.PROFESSOR) || us.getRole().equals(Role.TEACHING_ASSISTANT) || us.getRole().equals(Role.DEMONSTRATOR)) {
+			if(us.getRole().equals("PROFESSOR") || us.getRole().equals("TEACHING_ASSISTANT") || us.getRole().equals("DEMONSTRATOR")) {
 				professorsDTO.add(new UserDTO(us));
 			}
 		}

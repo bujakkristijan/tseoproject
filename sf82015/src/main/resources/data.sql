@@ -7,6 +7,9 @@ values (2, "pera","petrovic", "sf6/2015", "pera@email.com", "sifra2", "STUDENT")
 insert into sf82015.user (id, name, surname, index_num, email, password, role) 
 values (3, "zika","zivkovic", "sf7/2015", "zika@email.com", "sifra3", "PROFESSOR");
 
+insert into sf82015.user (id, name, surname, index_num, email, password, role) 
+values (4, "a","zivkovic", "sf8/2015", "a", "a", "ADMIN");
+
 insert into sf82015.course (id, code, description, name, price) 
 values (1, "001","Course description 1", "Matematika", 2000);
 
@@ -24,5 +27,9 @@ values (2, null, 2, 3);
 
 insert into sf82015.user_course (id, date_added, course_id, user_id) 
 values (3, null, 1, 3);
+
+insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (1, 2000, 213213, null, 21312312, 1, 2);
+insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (2, 3000, 213213, null, 21312312, 2, 2);
+insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (3, 2000, 213213, null, 21312312, 1, 2);
 
 select * from sf82015.user;

@@ -1,0 +1,31 @@
+<h2>Payment list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> User </th>
+          <th> Date Payed </th>
+          <th> Amount in RSD </th>
+          <th> Card number </th>
+          <th> Recipient number </th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let payment of myPayments">
+        <td>{{ payment.course.name + " " + payment.course.code }}</td>
+        <td>{{ payment.user.name + " " + payment.user.surname }}</td>
+        <td>{{ payment.datePayed }}</td>
+        <td>{{ payment.amount }}</td>
+        <td>{{ payment.cardNumber }}</td>
+        <td>{{ payment.recipientNumber }}</td>
+
+
+      </tr>
+
+
+  </tbody>
+</table>
+<!--
+<button (click) = "goToCreatePayment()" class="btn btn-success"> Add new professor </button>
+-->

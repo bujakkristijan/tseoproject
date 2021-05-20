@@ -24,7 +24,7 @@ export class MyPaymentListComponent implements OnInit {
   }
 
   goToCreatePayment(){ // ne znam zasto more public da stoji, nece kad je private
-    //this.router.navigate(['create-professor']);
+    this.router.navigate(['create-payment']);
   }
 
 }

@@ -20,6 +20,7 @@ import { ProfessorCourseListComponent } from './professor-course-list/professor-
 import { CreateProfessorCourseComponent } from './create-professor-course/create-professor-course.component';
 import { LoginComponent } from './login/login.component';
 import { MyPaymentListComponent } from './my-payment-list/my-payment-list.component';
+import { CreatePaymentComponent } from './create-payment/create-payment.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MyPaymentListComponent } from './my-payment-list/my-payment-list.compon
     CreateProfessorCourseComponent,
     LoginComponent,
     MyPaymentListComponent,
+    CreatePaymentComponent,
 
 
   ],

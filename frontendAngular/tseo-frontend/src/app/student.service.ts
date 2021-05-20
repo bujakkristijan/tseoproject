@@ -38,4 +38,8 @@ export class StudentService {
   getMyPaymentList():Observable<Payment[]>{
     return this.httpClient.get<Payment[]>("http://localhost:8080/payment/getMyPayments");
   }
+
+  createPayment(payment: Payment):Observable<Object>{
+    return this.httpClient.post("http://localhost:8080/payment/addPayment", payment);
+  }
 }

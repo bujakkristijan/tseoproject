@@ -1,6 +1,7 @@
 package tseo.sf82015.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,11 +64,14 @@ public class PaymentController {
 		if(paymentDTO == null) {
 			return new ResponseEntity<PaymentDTO>(HttpStatus.BAD_REQUEST);
 		}
+		//User userLogged = userService.getCurrentUser();
+		User userLogged = userService.getLoggedUser();
+		
 		Payment payment = new Payment();
 		
 		payment.setCourse(paymentDTO.getCourse());
-		payment.setUser(paymentDTO.getUser()); 
-		payment.setDatePayed(paymentDTO.getDatePayed());
+		payment.setUser(userLogged); 
+		payment.setDatePayed(new Date());
 		payment.setAmount(paymentDTO.getAmount());
 		payment.setCardNumber(paymentDTO.getCardNumber());
 		payment.setRecipientNumber(paymentDTO.getRecipientNumber());

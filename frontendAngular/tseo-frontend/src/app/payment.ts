@@ -3,7 +3,7 @@ import { User } from "./user";
 
 export class Payment {
 
-  course: Course;
+  public course: Course;
   user: User;
   datePayed: Date;
   amount: number;

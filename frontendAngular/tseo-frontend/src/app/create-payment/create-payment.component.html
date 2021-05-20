@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3"> <!--kako da se pomeri input pomocu bootstrap-->
+  <h3>Create payment</h3>
+  <form (ngSubmit) = "onSubmit()">
+
+
+
+    <div class="form-group">
+      <label> Choose course </label>
+      <tr></tr>
+      <select name="ChooseCourse" [(ngModel)] = "payment.course">
+        <option *ngFor = "let course of courses" [ngValue] = "course">Name: {{course.name}}, Code: {{course.code}}</option> <!-- ngValue  moze i objekte a value samo stringove !!!!!!!!-->
+      </select>
+      <tr></tr>
+    </div>
+
+    <div class="form-group">
+      <label> Your card number: </label>
+      <input type="text" class="form-control" id = "cardNumber"
+        [(ngModel)] = "payment.cardNumber" name="cardNumber"> <!--importujem forms module u app.module.ts da bih mogao binding da koristim-->
+    </div>
+
+    <div class="form-group">
+      <label> Recipient number: </label>
+      <input type="text" class="form-control" id = "recipientNumber"
+        [(ngModel)] = "payment.recipientNumber" name="recipientNumber">
+    </div>
+
+    <div class="form-group">
+      <label> Amount in RSD: </label>
+      <input type="text" class="form-control" id = "amount"
+        [(ngModel)] = "payment.amount" name="amount">
+    </div>
+
+
+    <button class="btn btn-success" type="submit"> Submit </button>
+
+  </form>
+  </div>

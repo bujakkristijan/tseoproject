@@ -31,4 +31,10 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/students']);
   }
 
+  logout(){
+    this.loginService.logout().subscribe(data =>{
+     // this.appComponent.signOut();
+    });
+  }
+
 }

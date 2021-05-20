@@ -35,6 +35,9 @@ export class AppComponent implements OnInit {
   signOut(){
     this.loggedUser = new User();
     this.loggedUser.role = "SignOutRole";
+    this.loginService.logout().subscribe(data =>{
+      this.loggedUser = new User();
+    })
     this.router.navigate(['login']);
   }
 }

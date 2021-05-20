@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
+import { UserCourse } from './user-course';
+import { Course } from './course';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +44,12 @@ export class StudentService {
   createPayment(payment: Payment):Observable<Object>{
     return this.httpClient.post("http://localhost:8080/payment/addPayment", payment);
   }
+
+  //createStudentCourse(studentCourse: UserCourse): Observable<Object>{
+  //  return this.httpClient.post("http://localhost:8080/userCourse/addUserCourse", studentCourse);
+  //}
+
+  createStudentCourse(course: Course): Observable<Object>{
+      return this.httpClient.post("http://localhost:8080/userCourse/addStudentCourse", course);
+    }
 }

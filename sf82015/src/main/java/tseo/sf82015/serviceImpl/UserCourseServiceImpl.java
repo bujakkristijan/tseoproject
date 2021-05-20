@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import tseo.sf82015.model.UserCourse;
-import tseo.sf82015.model.UserTest;
+
 import tseo.sf82015.repository.UserCourseRepository;
-import tseo.sf82015.repository.UserTestRepository;
+
 import tseo.sf82015.service.UserCourseService;
 
 @Service

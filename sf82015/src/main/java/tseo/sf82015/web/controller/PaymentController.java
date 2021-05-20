@@ -114,7 +114,7 @@ public class PaymentController {
 				}
 		
 		List<PaymentDTO> myPaymentsDTO = new ArrayList<PaymentDTO>();
-		for (Payment p : payments) {
+		for (Payment p : myPayments) {
 			myPaymentsDTO.add(new PaymentDTO(p));
 		}
 		return new ResponseEntity<List<PaymentDTO>>(myPaymentsDTO, HttpStatus.OK);

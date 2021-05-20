@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tseo.sf82015.model.Course;
 import tseo.sf82015.model.Role;
+import tseo.sf82015.model.User;
 import tseo.sf82015.model.UserCourse;
 import tseo.sf82015.service.CourseService;
 import tseo.sf82015.service.UserCourseService;
+import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.CourseDTO;
 import tseo.sf82015.web.dto.UserCourseDTO;
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,6 +31,12 @@ public class UserCourseController {
 	
 	@Autowired 
 	UserCourseService userCourseService;
+	
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserCourseDTO> getUserCourse(@PathVariable Long id) {
@@ -75,6 +83,32 @@ public class UserCourseController {
 			return new ResponseEntity<UserCourseDTO>(new UserCourseDTO(userCourse), HttpStatus.CREATED);
 		}else {
 			return new ResponseEntity<UserCourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/addStudentCourse", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<CourseDTO> addStudentCourse(@RequestBody CourseDTO courseDTO) {
+		if(courseDTO == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		//User user = userService.getCurrentUser();
+		User user = userService.getLoggedUser();
+		Course course = courseService.findOne(courseDTO.getId());
+		UserCourse userCourse = new UserCourse();
+		//System.out.println(userCourseDTO.getCourse().getName() + "/////" + userCourseDTO.getUser().getName());
+		userCourse.setCourse(course);
+		userCourse.setUser(user); 
+		userCourse.setDateAdded(new Date());
+		
+		userCourse = userCourseService.save(userCourse);
+		
+		
+		
+		if (userCourse != null) {
+			return new ResponseEntity<CourseDTO>(new CourseDTO(course), HttpStatus.CREATED);
+		}else {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
 	}
 	

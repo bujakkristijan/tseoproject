@@ -32,4 +32,8 @@ export class CourseService {
   deleteCourse(id: number):Observable<Object>{
     return this.httpClient.delete("http://localhost:8080/course/delete/"+id);
   }
+
+  getMyPayedCoursesList():Observable<Course[]>{
+    return this.httpClient.get<Course[]>("http://localhost:8080/course/getMyPayedCourses");
+  }
 }

@@ -18,4 +18,8 @@ export class LoginService {
   getLoggedUser():Observable<User>{
     return this.httpClient.get<User>("http://localhost:8080/login/getCurrentUserLoggedIn");
   }
+
+  logout(): Observable<Login>{
+    return this.httpClient.get<Login>("http://localhost:8080/login/logout");
+  }
 }

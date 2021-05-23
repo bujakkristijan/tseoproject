@@ -1,0 +1,31 @@
+<h2>My course list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Name </th>
+          <th> Code </th>
+          <th> Price </th>
+          <th> Description </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let course of myCourses">
+        <td>{{ course.name }}</td>
+        <td>{{ course.code }}</td>
+        <td>{{ course.price }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+
+          <button (click) = "updateCourse(course.id)" class="btn btn-info"> Update </button>
+
+          <!--
+          <button (click) = "addTest(course.id)" class="btn btn-info" style="margin-left: 10px"> Create test </button>
+          -->
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+
+

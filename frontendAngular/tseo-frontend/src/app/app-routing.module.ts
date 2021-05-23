@@ -1,3 +1,4 @@
+import { ProfessorMyCourseListComponent } from './professor-my-course-list/professor-my-course-list.component';
 import { AvailableCourseListComponent } from './available-course-list/available-course-list.component';
 import { MySubscribedCourseListComponent } from './my-subscribed-course-list/my-subscribed-course-list.component';
 import { CreateStudentCourseComponent } from './create-student-course/create-student-course.component';
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path: 'my-payed-course-list', component: MyPayedCourseListComponent},
   {path: 'create-student-course/:id', component: CreateStudentCourseComponent},
   {path: 'my-subscribed-course-list', component: MySubscribedCourseListComponent},
-  {path: 'available-course-list', component: AvailableCourseListComponent}
+  {path: 'available-course-list', component: AvailableCourseListComponent},
+  {path: 'professor-my-course-list', component: ProfessorMyCourseListComponent}
 
 ];
 

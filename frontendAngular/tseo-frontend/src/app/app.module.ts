@@ -23,6 +23,8 @@ import { MyPaymentListComponent } from './my-payment-list/my-payment-list.compon
 import { CreatePaymentComponent } from './create-payment/create-payment.component';
 import { MyPayedCourseListComponent } from './my-payed-course-list/my-payed-course-list.component';
 import { CreateStudentCourseComponent } from './create-student-course/create-student-course.component';
+import { MySubscribedCourseListComponent } from './my-subscribed-course-list/my-subscribed-course-list.component';
+import { AvailableCourseListComponent } from './available-course-list/available-course-list.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { CreateStudentCourseComponent } from './create-student-course/create-stu
     CreatePaymentComponent,
     MyPayedCourseListComponent,
     CreateStudentCourseComponent,
+    MySubscribedCourseListComponent,
+    AvailableCourseListComponent,
 
 
   ],

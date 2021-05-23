@@ -12,9 +12,7 @@
     <li class="nav-item">
       <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="courses" routerLinkActive="active" class="nav-link">Course list</a>
     </li>
-    <li class="nav-item">
-      <a routerLink="courses" routerLinkActive="active" class="nav-link">Course list without check</a>
-    </li>
+
     <!--
     <li class="nav-item">
       <a *ngIf="loggedUser.role.toString() == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
@@ -30,6 +28,14 @@
 
     <li class="nav-item">
       <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payed-course-list" routerLinkActive="active" class="nav-link">My payed courses</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-subscribed-course-list" routerLinkActive="active" class="nav-link">My subscribed courses</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="available-course-list" routerLinkActive="active" class="nav-link">All available courses</a>
     </li>
 
     <li class="nav-item">

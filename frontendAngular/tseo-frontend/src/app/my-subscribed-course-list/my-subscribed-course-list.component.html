@@ -1,0 +1,29 @@
+<h2>My subscirbed course list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Name </th>
+          <th> Code </th>
+          <th> Price </th>
+          <th> Description </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let course of mySubscribedCourses">
+        <td>{{ course.name }}</td>
+        <td>{{ course.code }}</td>
+        <td>{{ course.price }}</td>
+        <td>{{ course.description }}</td>
+        <td>
+          <!--
+          <button (click) = "goToShowAvailableTests(course.id)" class="btn btn-info"> Subscribe </button>
+          -->
+
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+<tr></tr>
+<!-- <button (click) = "goToCreateCourse()" class="btn btn-success"> Add new course </button> -->

@@ -211,5 +211,43 @@ public class CourseController {
 		}
 		return new ResponseEntity<List<CourseDTO>>(payedCoursesDTO, HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/getMySubscribedCourses", method = RequestMethod.GET)
+	public ResponseEntity<List<CourseDTO>> getMySubscribedCourses() {
+		
+		//User user = userService.getCurrentUser();
+		User user = userService.getLoggedUser();
+		
+		List<UserCourse> userCourses = userCourseService.findAll();
+		List<Course> courses = courseService.findAll();
+		List<UserCourse> myUserCourses = new ArrayList<UserCourse>();
+		List<Course> mySubscribedCourses = new ArrayList<Course>();
+		List<CourseDTO> mySubscribedCoursesDTO = new ArrayList<CourseDTO>();
+		//uzmimam moje usercourseve
+		for(UserCourse uc: userCourses) {
+			if(uc.getUser().getId() == user.getId()) {
+				myUserCourses.add(uc);
+				
+			}
+		}
+		//uzimam courseve
+		for(UserCourse muc: myUserCourses) {
+			for(Course c: courses) {
+				if(c.getId() == muc.getCourse().getId() && muc.getUser().getId() == user.getId()) {
+					mySubscribedCourses.add(c);
+				}
+			}
+		}
+		//pretvaram u dto koji saljem na front
+		for(Course mc: mySubscribedCourses) {
+			mySubscribedCoursesDTO.add(new CourseDTO(mc));
+		}
+		
+		
+		
+		
+		return new ResponseEntity<List<CourseDTO>>(mySubscribedCoursesDTO, HttpStatus.OK);
+	}
 
 }

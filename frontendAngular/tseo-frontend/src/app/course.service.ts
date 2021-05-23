@@ -36,4 +36,8 @@ export class CourseService {
   getMyPayedCoursesList():Observable<Course[]>{
     return this.httpClient.get<Course[]>("http://localhost:8080/course/getMyPayedCourses");
   }
+
+  getMySubscribedCourseList():Observable<Course[]>{
+    return this.httpClient.get<Course[]>("http://localhost:8080/course/getMySubscribedCourses");
+  }
 }

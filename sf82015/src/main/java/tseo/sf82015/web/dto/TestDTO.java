@@ -32,6 +32,7 @@ public class TestDTO {
     	description = test.getDescription();
     	dateCreated = test.getDateCreated();
     	maxPoints = test.getMaxPoints();
+    	//course = new CourseDTO(test.getCourse());
     	course = test.getCourse();
     	user = test.getUser();
     }

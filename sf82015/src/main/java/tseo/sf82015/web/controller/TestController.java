@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tseo.sf82015.model.Course;
 import tseo.sf82015.model.Test;
+import tseo.sf82015.model.User;
 import tseo.sf82015.model.UserTest;
 import tseo.sf82015.service.CourseService;
 import tseo.sf82015.service.TestService;
+import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.CourseDTO;
 import tseo.sf82015.web.dto.TestDTO;
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "test")
 public class TestController {
@@ -32,6 +35,9 @@ public class TestController {
 	
 	@Autowired 
 	CourseService courseService;
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<TestDTO> getTest(@PathVariable Long id) {
@@ -56,7 +62,7 @@ public class TestController {
 		}
 		return new ResponseEntity<List<TestDTO>>(testsDTO, HttpStatus.OK);
 	}
-	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(value = "/addTest", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TestDTO> addTest(@RequestBody TestDTO testDTO) {
 		if(testDTO == null) {
@@ -64,6 +70,9 @@ public class TestController {
 		}
 		Course course = courseService.findOne(testDTO.getCourse().getId());
 		List<UserTest> userTests = new ArrayList<UserTest>();
+		
+		//User userLogged = userService.getCurrentUser();
+		User userLogged = userService.getLoggedUser();
 		
 		if (course == null) 
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -74,7 +83,9 @@ public class TestController {
 		test.setDescription(testDTO.getDescription());
 		test.setDateCreated(new Date());
 		test.setMaxPoints(testDTO.getMaxPoints());
-		test.setCourse(testDTO.getCourse());
+		//test.setCourse(courseService.findOne(testDTO.getCourseDTO().getId()));
+		test.setCourse(course);
+		test.setUser(userLogged);
 		
 		//course.getTests().add(test);
 		
@@ -101,7 +112,7 @@ public class TestController {
 		test.setDescription(testDTO.getDescription());
 		test.setDateCreated(new Date());
 		test.setMaxPoints(testDTO.getMaxPoints());
-		test.setCourse(testDTO.getCourse());
+		//test.setCourse(testDTO.getCourse());
 		
 		test = testService.save(test);// proveriti zasto ne more student = ...
 		
@@ -117,6 +128,25 @@ public class TestController {
 									
 		testService.delete(test);
 		return new ResponseEntity<TestDTO>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getMyTests", method = RequestMethod.GET)
+	public ResponseEntity<List<TestDTO>> getMyTests() {
+		List<Test> tests = testService.findAll();
+		List<Test> myTests = new ArrayList<Test>();
+		User loggedUser = userService.getLoggedUser();
+		if (tests.equals(null))
+			return new ResponseEntity<List<TestDTO>>(HttpStatus.NOT_FOUND);
+		for(Test t: tests) {
+			if(t.getUser().getId() == loggedUser.getId()) {
+				myTests.add(t);
+			}
+		}
+		List<TestDTO> testsDTO = new ArrayList<>();
+		for (Test t : myTests) {
+			testsDTO.add(new TestDTO(t));
+		}
+		return new ResponseEntity<List<TestDTO>>(testsDTO, HttpStatus.OK);
 	}
 
 }

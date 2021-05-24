@@ -1,0 +1,34 @@
+<h2>My test list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> Title </th>
+          <th> Date created </th>
+          <th> Description </th>
+          <th> Maximum points </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let test of myTests">
+        <td>{{ test.course.name }}</td>
+        <td>{{ test.title }}</td>
+        <td>{{ test.dateCreated }}</td>
+        <td>{{ test.description }}</td>
+        <td>{{ test.maxPoints }}</td>
+        <td>
+          <!--
+          <button (click) = "updateTest(test.id)" class="btn btn-info"> Update </button>
+          <button (click) = "deleteTest(test.id)" class="btn btn-info"> Delete </button>
+          -->
+          <!--
+          <button (click) = "addTest(course.id)" class="btn btn-info" style="margin-left: 10px"> Create test </button>
+          -->
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+
+

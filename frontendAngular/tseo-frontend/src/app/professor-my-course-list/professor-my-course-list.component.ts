@@ -29,4 +29,8 @@ export class ProfessorMyCourseListComponent implements OnInit {
 
   }
 
+  createTest(id: number){
+    this.router.navigate(['professor-create-test', id]);
+  }
+
 }

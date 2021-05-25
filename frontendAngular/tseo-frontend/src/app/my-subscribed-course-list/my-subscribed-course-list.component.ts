@@ -22,4 +22,8 @@ export class MySubscribedCourseListComponent implements OnInit {
       this.mySubscribedCourses = data;
     });
   }
+
+  goToShowAvailableTests(id: number){
+    this.router.navigate(["my-available-test-list-for-course", id]);
+  }
 }

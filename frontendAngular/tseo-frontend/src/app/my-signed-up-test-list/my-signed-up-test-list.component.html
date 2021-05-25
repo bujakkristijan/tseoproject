@@ -1,0 +1,28 @@
+<h2>My signed up test list</h2>
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> Test </th>
+          <th> Signed up by </th>
+          <th> Max points </th>
+          <th> Date signed up </th>
+          <th> Status </th>
+
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let userTest of myUserTestsNotGraded">
+        <td>{{ userTest.test.course.name }}</td>
+        <td>{{ userTest.test.title }}</td>
+        <td>{{ userTest.userStudentSignedUp.name  + " " +  userTest.userStudentSignedUp.surname  }}</td>
+        <td>{{ userTest.test.maxPoints }}</td>
+        <td>{{ userTest.dateCreated }}</td>
+        <td>{{ userTest.status }}</td>
+
+
+      </tr>
+  </tbody>
+</table>
+<tr></tr>
+<!-- <button (click) = "goToCreateCourse()" class="btn btn-success"> Add new course </button> -->

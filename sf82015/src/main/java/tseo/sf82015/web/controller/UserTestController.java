@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import tseo.sf82015.model.User;
 import tseo.sf82015.model.UserTest;
+import tseo.sf82015.service.UserService;
 import tseo.sf82015.service.UserTestService;
 import tseo.sf82015.web.dto.UserTestDTO;
 
@@ -24,6 +26,9 @@ public class UserTestController {
 	
 	@Autowired 
 	UserTestService userTestService;
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserTestDTO> getUserTest(@PathVariable Long id) {
@@ -81,6 +86,30 @@ public class UserTestController {
 									
 		userTestService.delete(userTest);
 		return new ResponseEntity<UserTestDTO>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getMyUserTestsNotGraded", method = RequestMethod.GET)
+	public ResponseEntity<List<UserTestDTO>> getMyUserTestsNotGraded() {
+		List<UserTest> userTests = userTestService.findAll();
+		List<UserTest> myUserTestsNotGraded = new ArrayList<UserTest>();
+
+		if (userTests.equals(null))
+			return new ResponseEntity<List<UserTestDTO>>(HttpStatus.NOT_FOUND);
+		
+		//User loggedUser = userService.getCurrentUser();
+		User loggedUser = userService.getLoggedUser();
+		
+		for(UserTest ut: userTests) {
+			if(ut.getUserStudentSignedUp().getId() == loggedUser.getId() && ut.getStatus().equals("N/A")) {
+				myUserTestsNotGraded.add(ut);
+			}
+		}
+		
+		List<UserTestDTO> userTestsDTO = new ArrayList<UserTestDTO>();
+		for (UserTest ut : myUserTestsNotGraded) {
+			userTestsDTO.add(new UserTestDTO(ut));
+		}
+		return new ResponseEntity<List<UserTestDTO>>(userTestsDTO, HttpStatus.OK);
 	}
 
 }

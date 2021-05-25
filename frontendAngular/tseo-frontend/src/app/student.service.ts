@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { UserCourse } from './user-course';
 import { Course } from './course';
+import { Test } from './test';
+import { UserTest } from './user-test';
 
 @Injectable({
   providedIn: 'root'
@@ -52,4 +54,12 @@ export class StudentService {
   createStudentCourse(course: Course): Observable<Object>{
       return this.httpClient.post("http://localhost:8080/userCourse/addStudentCourse", course);
     }
+
+    getTestsForCourse(courseDTO: Course):Observable<any>{
+      return this.httpClient.post("http://localhost:8080/test/getTestsForCourse", courseDTO);
+    }
+
+    getMyUserTestsNotGraded():Observable<UserTest[]>{
+      return this.httpClient.get<UserTest[]>("http://localhost:8080/test/getTestsForCourse");
+     }
 }

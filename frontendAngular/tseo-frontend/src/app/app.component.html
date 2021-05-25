@@ -39,6 +39,10 @@
     </li>
 
     <li class="nav-item">
+      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-signed-up-test-list" routerLinkActive="active" class="nav-link">My signed up tests</a>
+    </li>
+
+    <li class="nav-item">
       <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-course-list" routerLinkActive="active" class="nav-link">My courses</a>
     </li>
 

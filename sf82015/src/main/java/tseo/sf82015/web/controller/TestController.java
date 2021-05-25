@@ -148,5 +148,35 @@ public class TestController {
 		}
 		return new ResponseEntity<List<TestDTO>>(testsDTO, HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200") // preko post metode saljem testove, zato sto saljem courseId, ne uzimam iz putanje
+	@RequestMapping(value = "/getTestsForCourse", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<TestDTO>> getTestsForCourse(@RequestBody Course courseDTO) {
+		if(courseDTO == null) {
+			return new ResponseEntity<List<TestDTO>>(HttpStatus.BAD_REQUEST);
+		}
+		Course course = courseService.findOne(courseDTO.getId());
+		
+		if (course == null) 
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		List<Test> allTests = testService.findAll();
+		List<Test> allTestsForCourse = new ArrayList<Test>();
+		List<TestDTO> allTestsForCourseDTO = new ArrayList<TestDTO>();
+		
+		for(Test t: allTests) {
+			if(t.getCourse().getId() == course.getId()) {
+				allTestsForCourse.add(t);
+			}
+		}
+		
+		for(Test t: allTestsForCourse) {
+			allTestsForCourseDTO.add(new TestDTO(t));
+		}
+		
+		
+		return new ResponseEntity<List<TestDTO>>(allTestsForCourseDTO, HttpStatus.OK);
+		
+	}
 
 }

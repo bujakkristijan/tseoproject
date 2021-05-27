@@ -1,0 +1,22 @@
+<h3>Sign up for test on course: {{test.course.name + " " + test.course.code}} </h3>
+<div>
+  <div>
+    <label> <b> Test title: </b></label> {{test.title}}
+  </div>
+  <div>
+    <label> <b> Description: </b></label> {{test.description}}
+  </div>
+  <div>
+    <label> <b> Maximum points: </b></label> {{test.maxPoints}}
+  </div>
+  <div>
+    <label> <b> Date created: </b></label> {{test.dateCreated}}
+  </div>
+  <div>
+    <label> <b> Created by: </b></label> {{test.user.name}} {{test.user.surname}} ROLE: {{test.user.role}}
+  </div>
+  <div>
+    <button (click) = "onSubmit()" class="btn btn-success"> Sign up for test </button>
+  </div>
+
+</div>

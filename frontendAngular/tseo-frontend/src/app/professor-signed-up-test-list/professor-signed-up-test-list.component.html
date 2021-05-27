@@ -1,0 +1,32 @@
+<!-- <h2>My signed up test list for course: {{test.course.name}} {{test.course.code}}</h2> -->
+<table class = "table table-striped">
+  <thead>
+      <tr>
+          <th> Course name </th>
+          <th> Test title </th>
+          <th> Test created by </th>
+          <th> Signed by student </th>
+          <th> Date signed up </th>
+          <th> Maximum points </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let userTest of myUserTests">
+        <td>{{ userTest.test.course.name }}</td>
+        <td>{{ userTest.test.title }}</td>
+        <td>{{ userTest.test.user.name + " " +  userTest.test.user.surname + " " +  userTest.test.user.role }}</td>
+        <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.surname + " " +  userTest.userStudentSignedUp.indexNum}}</td>
+        <td>{{ userTest.dateCreated }}</td>
+        <td>{{ userTest.test.maxPoints }}</td>
+        <!--
+        <td>
+          <button (click) = "goToSignUpForTest(test.id)" class="btn btn-info"> Sign up for test </button>
+        </td>
+      -->
+
+      </tr>
+  </tbody>
+</table>
+<tr></tr>
+<!-- <button (click) = "goToCreateCourse()" class="btn btn-success"> Add new course </button> -->

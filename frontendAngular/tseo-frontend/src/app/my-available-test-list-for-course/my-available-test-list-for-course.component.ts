@@ -1,9 +1,10 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 import { Test } from '../test';
 import { Course } from '../course';
 import { StudentService } from '../student.service';
+import { UserTest } from '../user-test';
 
 @Component({
   selector: 'app-my-available-test-list-for-course',
@@ -14,11 +15,16 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
 
   myAvailableTestsForCourse: Test[];
   courseId: number;
+  testId: number;
+  myUserTests: UserTest[];
+
   course: Course = new Course();
-  constructor(private courseService: CourseService, private studentService: StudentService, private route: ActivatedRoute) { }
+  constructor(private courseService: CourseService,
+    private router: Router, private studentService: StudentService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getSelectedCourse();
+    this.getMyUserTests();
     //this.getAvailableTestListForCourse(); // kad odavde pozivam metodu, za course salje null na back
   }
 
@@ -33,6 +39,16 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
   getAvailableTestListForCourse(){
     this.studentService.getTestsForCourse(this.course).subscribe(data =>{
       this.myAvailableTestsForCourse = data;
+    });
+  }
+
+  goToSignUpForTest(testId: number){
+    this.router.navigate(['student-sign-up-test', testId]);
+  }
+
+  getMyUserTests(){
+    this.studentService.getMyUserTestsNotGraded().subscribe(data =>{
+      this.myUserTests = data;
     });
   }
 

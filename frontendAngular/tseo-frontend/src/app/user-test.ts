@@ -11,4 +11,5 @@ export class UserTest {
 	dateUpdated: Date;
 	status: string;
 	note: string;
+  signedUpStatus: string;
 }

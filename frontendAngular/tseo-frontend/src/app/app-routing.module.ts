@@ -1,3 +1,5 @@
+import { ProfessorSignedUpTestListComponent } from './professor-signed-up-test-list/professor-signed-up-test-list.component';
+import { StudentSignUpTestComponent } from './student-sign-up-test/student-sign-up-test.component';
 import { MySignedUpTestListComponent } from './my-signed-up-test-list/my-signed-up-test-list.component';
 import { MyAvailableTestListForCourseComponent } from './my-available-test-list-for-course/my-available-test-list-for-course.component';
 import { ProfessorMyTestListComponent } from './professor-my-test-list/professor-my-test-list.component';
@@ -52,7 +54,9 @@ const routes: Routes = [
   {path: 'professor-create-test/:id', component: ProfessorCreateTestComponent},
   {path: 'professor-my-test-list', component: ProfessorMyTestListComponent},
   {path: 'my-available-test-list-for-course/:id', component: MyAvailableTestListForCourseComponent},
-  {path: 'my-signed-up-test-list', component: MySignedUpTestListComponent}
+  {path: 'my-signed-up-test-list', component: MySignedUpTestListComponent},
+  {path: 'student-sign-up-test/:id', component: StudentSignUpTestComponent},
+  {path: 'professor-signed-up-test-list/:id', component: ProfessorSignedUpTestListComponent}
 
 ];
 

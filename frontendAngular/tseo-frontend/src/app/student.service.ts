@@ -60,6 +60,15 @@ export class StudentService {
     }
 
     getMyUserTestsNotGraded():Observable<UserTest[]>{
-      return this.httpClient.get<UserTest[]>("http://localhost:8080/test/getTestsForCourse");
+      return this.httpClient.get<UserTest[]>("http://localhost:8080/userTest/getMyUserTestsNotGraded");
      }
+
+     getTestById(id: number):Observable<Test>{
+
+      return this.httpClient.get<Test>(`http://localhost:8080/test/${id}`);
+    }
+
+    createUserTest(test: Test):Observable<Object>{
+      return this.httpClient.post("http://localhost:8080/userTest/addUserTest", test);
+    }
 }

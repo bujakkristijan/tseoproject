@@ -43,11 +43,14 @@ public class UserTest {
 	@Column(nullable = true)
 	private String note;
 	
+	@Column(nullable = true)
+	private String signedUpStatus;
+	
 	public UserTest() {
 		
 	}
 
-	public UserTest(Test test, User userStudentSignedUp, User userProfessorUpdate,  int points, Date dateCreated, Date dateUpdated, String status, String note) {
+	public UserTest(Test test, User userStudentSignedUp, User userProfessorUpdate,  int points, Date dateCreated, Date dateUpdated, String status, String note, String signedUpStatus) {
 		
 		this.test = test;
 		this.userStudentSignedUp = userStudentSignedUp;
@@ -57,6 +60,15 @@ public class UserTest {
 		this.dateUpdated = dateUpdated;
 		this.status = status;
 		this.note = note;
+		this.signedUpStatus = signedUpStatus;
+	}
+
+	public String getSignedUpStatus() {
+		return signedUpStatus;
+	}
+
+	public void setSignedUpStatus(String signedUpStatus) {
+		this.signedUpStatus = signedUpStatus;
 	}
 
 	public User getUserProfessorUpdate() {

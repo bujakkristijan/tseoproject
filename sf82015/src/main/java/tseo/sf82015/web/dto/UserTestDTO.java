@@ -17,6 +17,7 @@ public class UserTestDTO {
 	private Date dateUpdated;
 	private String status;
 	private String note;
+	private String signedUpStatus;
 	
 	public UserTestDTO() {
 		
@@ -33,7 +34,16 @@ public class UserTestDTO {
 		dateUpdated = userTest.getDateUpdated();
 		status = userTest.getStatus();
 		note = userTest.getNote();
+		signedUpStatus = userTest.getSignedUpStatus();
 		
+	}
+
+	public String getSignedUpStatus() {
+		return signedUpStatus;
+	}
+
+	public void setSignedUpStatus(String signedUpStatus) {
+		this.signedUpStatus = signedUpStatus;
 	}
 
 	public Long getId() {

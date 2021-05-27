@@ -43,4 +43,13 @@ export class ProfessorService {
   getMyTestList():Observable<Test[]>{
     return this.httpClient.get<Test[]>("http://localhost:8080/test/getMyTests");
   }
+
+  getTestById(id: number):Observable<Test>{
+
+    return this.httpClient.get<Test>(`http://localhost:8080/test/${id}`);
+  }
+
+  getUserTestsForTest(test: Test):Observable<any>{ // mora any, buni se u ts fajlu komponente
+    return this.httpClient.post("http://localhost:8080/userTest/getUserTestsProfessor", test)
+  }
 }

@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
@@ -5,6 +6,7 @@ import { Test } from '../test';
 import { Course } from '../course';
 import { StudentService } from '../student.service';
 import { UserTest } from '../user-test';
+import { User } from '../user';
 
 @Component({
   selector: 'app-my-available-test-list-for-course',
@@ -17,12 +19,17 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
   courseId: number;
   testId: number;
   myUserTests: UserTest[];
+  loggedUser: User;
+
 
   course: Course = new Course();
   constructor(private courseService: CourseService,
-    private router: Router, private studentService: StudentService, private route: ActivatedRoute) { }
+    private router: Router, private studentService: StudentService, private route: ActivatedRoute,
+    private appComponent: AppComponent) { }
 
   ngOnInit(): void {
+
+    this.getLoggedUser();
     this.getSelectedCourse();
     this.getMyUserTests();
     //this.getAvailableTestListForCourse(); // kad odavde pozivam metodu, za course salje null na back
@@ -49,7 +56,11 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
   getMyUserTests(){
     this.studentService.getMyUserTestsNotGraded().subscribe(data =>{
       this.myUserTests = data;
+      console.log(this.myUserTests);
     });
+  }
+  getLoggedUser(){
+    this.loggedUser = this.appComponent.loggedUser;
   }
 
 }

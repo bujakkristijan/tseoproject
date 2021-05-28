@@ -135,8 +135,8 @@ public class UserTestController {
 		
 		
 		for(UserTest ut: userTests) {
-			if(test.getId() == ut.getTest().getId()) {
-				myUserTestsProfessor.add(ut);
+			if(test.getId() == ut.getTest().getId() && loggedUser.getId() == ut.getTest().getUser().getId()) {
+				myUserTestsProfessor.add(ut); // samo ako je on namestio test, vraca mu njegove usertestove
 			}
 		}
 		
@@ -145,6 +145,26 @@ public class UserTestController {
 		}
 		
 		return new ResponseEntity<List<UserTestDTO>>(userTestsDTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/evaluate", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserTestDTO> evaluate(@RequestBody UserTestDTO userTestDTO) {
+		if (userTestDTO == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		UserTest userTest = userTestService.findOne(userTestDTO.getId()); 
+		User loggedUser = userService.getLoggedUser();
+		
+		userTest.setPoints(userTestDTO.getPoints());
+		userTest.setNote(userTestDTO.getNote());
+		userTest.setUserProfessorUpdate(loggedUser);
+		userTest.setDateUpdated(new Date());
+		userTest.setStatus("EVALUATED");
+		
+		
+		userTest = userTestService.save(userTest);// proveriti zasto ne more student = ...
+		
+		return new ResponseEntity<UserTestDTO>(new UserTestDTO(userTest), HttpStatus.OK);
 	}
 	
 

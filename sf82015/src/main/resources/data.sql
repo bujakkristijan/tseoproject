@@ -37,4 +37,8 @@ insert into sf82015.payment (id, amount, card_number, date_payed, recipient_numb
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (6, 1000, 213213, null, 21312312, 1, 1);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (7, 1000, 213213, null, 21312312, 3, 1);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (8, 1000, 213213, null, 21312312, 3, 1);
+
+
+/*insert into sf82015.user_test (id, date_created, date_updated, note, points, signed_up_status, status, test_id, user_professor_update_id, user_student_signed_up_id  ) values (1, null, null, null, 20, null, "N/A", null, 1, 1);
+*/
 select * from sf82015.user;

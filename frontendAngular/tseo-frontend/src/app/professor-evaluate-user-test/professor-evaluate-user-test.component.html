@@ -1,0 +1,38 @@
+<div class="col-md-6 offset-md-3"> <!--kako da se pomeri input pomocu bootstrap-->
+  <h3>Evaluate test</h3>
+  <form (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+      <label> Test: </label> {{userTest.test.title}}
+    </div>
+
+    <div class="form-group">
+      <label> Signed up by user: </label> {{userTest.userStudentSignedUp.name + " " + userTest.userStudentSignedUp.surname + " " + userTest.userStudentSignedUp.indexNum }}
+    </div>
+
+    <div class="form-group">
+      <label> Date signed up: </label> {{userTest.dateCreated}}
+    </div>
+
+    <div class="form-group">
+      <label> Maximum points: </label> {{userTest.test.maxPoints}}
+    </div>
+
+
+
+    <div class="form-group">
+      <label> Points </label>
+      <input type="text" class="form-control" id = "points"
+        [(ngModel)] = "userTest.points" name="points">
+    </div>
+
+    <div class="form-group">
+      <label> Note </label>
+      <input type="text" class="form-control" id = "note"
+        [(ngModel)] = "userTest.note" name="note">
+    </div>
+
+    <button class="btn btn-success" type="submit"> Submit </button>
+
+  </form>
+  </div>

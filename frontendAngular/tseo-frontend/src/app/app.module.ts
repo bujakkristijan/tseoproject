@@ -32,6 +32,7 @@ import { MyAvailableTestListForCourseComponent } from './my-available-test-list-
 import { MySignedUpTestListComponent } from './my-signed-up-test-list/my-signed-up-test-list.component';
 import { StudentSignUpTestComponent } from './student-sign-up-test/student-sign-up-test.component';
 import { ProfessorSignedUpTestListComponent } from './professor-signed-up-test-list/professor-signed-up-test-list.component';
+import { ProfessorEvaluateUserTestComponent } from './professor-evaluate-user-test/professor-evaluate-user-test.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { ProfessorSignedUpTestListComponent } from './professor-signed-up-test-l
     MySignedUpTestListComponent,
     StudentSignUpTestComponent,
     ProfessorSignedUpTestListComponent,
+    ProfessorEvaluateUserTestComponent,
 
 
   ],

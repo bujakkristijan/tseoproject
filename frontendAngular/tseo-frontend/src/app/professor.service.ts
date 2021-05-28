@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Course } from './course';
 import { Test } from './test';
 import { User } from './user';
+import { UserTest } from './user-test';
 
 @Injectable({
   providedIn: 'root'
@@ -52,4 +53,14 @@ export class ProfessorService {
   getUserTestsForTest(test: Test):Observable<any>{ // mora any, buni se u ts fajlu komponente
     return this.httpClient.post("http://localhost:8080/userTest/getUserTestsProfessor", test)
   }
+
+  getUserTestById(id: number):Observable<UserTest>{
+
+    return this.httpClient.get<UserTest>(`http://localhost:8080/userTest/${id}`);
+  }
+
+  updateUserTest(userTest: UserTest): Observable<Object>{
+    return this.httpClient.put("http://localhost:8080/userTest/evaluate", userTest);
+  }
+
 }

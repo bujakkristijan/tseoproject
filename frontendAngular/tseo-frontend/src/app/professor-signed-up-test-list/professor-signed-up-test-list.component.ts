@@ -1,5 +1,5 @@
 import { ProfessorService } from './../professor.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Test } from '../test';
 import { UserTest } from '../user-test';
@@ -13,7 +13,7 @@ export class ProfessorSignedUpTestListComponent implements OnInit {
   testId: number;
   test: Test = new Test();
   myUserTests: UserTest[];
-  constructor(private route: ActivatedRoute, private professorService: ProfessorService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private professorService: ProfessorService) { }
 
   ngOnInit(): void {
     this.getSelectedTest();
@@ -32,6 +32,10 @@ export class ProfessorSignedUpTestListComponent implements OnInit {
     this.professorService.getUserTestsForTest(this.test).subscribe(data =>{
      this.myUserTests = data;
     });
+  }
+
+  goToProfessorEvaluateTest(id: number){
+    this.router.navigate(['professor-evaluate-user-test', id]);
   }
 
 

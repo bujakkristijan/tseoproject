@@ -1,3 +1,4 @@
+import { ProfessorEvaluateUserTestComponent } from './professor-evaluate-user-test/professor-evaluate-user-test.component';
 import { ProfessorSignedUpTestListComponent } from './professor-signed-up-test-list/professor-signed-up-test-list.component';
 import { StudentSignUpTestComponent } from './student-sign-up-test/student-sign-up-test.component';
 import { MySignedUpTestListComponent } from './my-signed-up-test-list/my-signed-up-test-list.component';
@@ -56,7 +57,8 @@ const routes: Routes = [
   {path: 'my-available-test-list-for-course/:id', component: MyAvailableTestListForCourseComponent},
   {path: 'my-signed-up-test-list', component: MySignedUpTestListComponent},
   {path: 'student-sign-up-test/:id', component: StudentSignUpTestComponent},
-  {path: 'professor-signed-up-test-list/:id', component: ProfessorSignedUpTestListComponent}
+  {path: 'professor-signed-up-test-list/:id', component: ProfessorSignedUpTestListComponent},
+  {path: 'professor-evaluate-user-test/:id', component: ProfessorEvaluateUserTestComponent}
 
 ];
 

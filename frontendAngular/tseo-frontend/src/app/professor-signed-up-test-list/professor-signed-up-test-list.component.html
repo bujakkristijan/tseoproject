@@ -19,11 +19,17 @@
         <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.surname + " " +  userTest.userStudentSignedUp.indexNum}}</td>
         <td>{{ userTest.dateCreated }}</td>
         <td>{{ userTest.test.maxPoints }}</td>
-        <!--
+
         <td>
-          <button (click) = "goToSignUpForTest(test.id)" class="btn btn-info"> Sign up for test </button>
+          <div *ngIf="userTest.status == 'EVALUATED';then content else other_content">here is ignored</div>
+          <ng-template #content><label>Evaluated</label></ng-template>
+          <ng-template #other_content><button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Evaluate test </button></ng-template>
+
+          <!--
+          <button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Evaluate test </button>
+          -->
         </td>
-      -->
+
 
       </tr>
   </tbody>

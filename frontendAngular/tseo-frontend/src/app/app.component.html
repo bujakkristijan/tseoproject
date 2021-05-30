@@ -51,6 +51,10 @@
     </li>
 
     <li class="nav-item">
+      <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-evaluated-test-list" routerLinkActive="active" class="nav-link">My evaluated tests</a>
+    </li>
+
+    <li class="nav-item">
       <a *ngIf="loggedUser != null" class="nav-link">Logged user: {{loggedUser.role}}</a>
     </li>
 

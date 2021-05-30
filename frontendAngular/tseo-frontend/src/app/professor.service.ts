@@ -63,4 +63,8 @@ export class ProfessorService {
     return this.httpClient.put("http://localhost:8080/userTest/evaluate", userTest);
   }
 
+  getMyEvaluatedTestList():Observable<UserTest[]>{
+    return this.httpClient.get<UserTest[]>("http://localhost:8080/userTest/getAllEvaluatedUserTests");
+  }
+
 }

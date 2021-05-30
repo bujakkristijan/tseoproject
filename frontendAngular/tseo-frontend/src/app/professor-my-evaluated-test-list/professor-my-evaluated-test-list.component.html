@@ -1,4 +1,4 @@
-<!-- <h2>My signed up test list for course: {{test.course.name}} {{test.course.code}}</h2> -->
+<<h2>My evaluated test list</h2>
 <table class = "table table-striped">
   <thead>
       <tr>
@@ -7,31 +7,27 @@
           <th> Test created by </th>
           <th> Signed by student </th>
           <th> Date signed up </th>
+          <th> Date evaluated </th>
           <th> Maximum points </th>
+          <th> Given points </th>
           <th> Actions </th>
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor = "let userTest of myUserTests">
+      <tr *ngFor = "let userTest of myEvaluatedUserTests">
         <td>{{ userTest.test.course.name }}</td>
         <td>{{ userTest.test.title }}</td>
         <td>{{ userTest.test.user.name + " " +  userTest.test.user.surname + " " +  userTest.test.user.role }}</td>
         <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.surname + " " +  userTest.userStudentSignedUp.indexNum}}</td>
         <td>{{ userTest.dateCreated }}</td>
+        <td>{{ userTest.dateUpdated }}</td>
         <td>{{ userTest.test.maxPoints }}</td>
+        <td>{{ userTest.points }}</td>
 
         <td>
-          <div *ngIf="userTest.status == 'EVALUATED';then content else other_content">here is ignored</div>
-          <ng-template #content>
-            <label>Evaluated</label>
-            <!--<ng-template #content><button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Update evaluated test </button></ng-template>-->
-            <!-- ne znam sto nece da ispisuje i button za update, vec samo labelu-->
-          </ng-template>
-          <ng-template #other_content><button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Evaluate test </button></ng-template>
 
-          <!--
-          <button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Evaluate test </button>
-          -->
+          <button (click) = "goToProfessorEvaluateTest(userTest.id)" class="btn btn-info"> Update </button>
+
         </td>
 
 

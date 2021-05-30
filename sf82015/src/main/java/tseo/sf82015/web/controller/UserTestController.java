@@ -166,6 +166,22 @@ public class UserTestController {
 		
 		return new ResponseEntity<UserTestDTO>(new UserTestDTO(userTest), HttpStatus.OK);
 	}
+	@RequestMapping(value = "/getAllEvaluatedUserTests", method = RequestMethod.GET)
+	public ResponseEntity<List<UserTestDTO>> getAllEvaluatedUserTests() {
+		List<UserTest> userTests = userTestService.findAll();
+		User loggedUser = userService.getLoggedUser();
+		if (userTests.equals(null))
+			return new ResponseEntity<List<UserTestDTO>>(HttpStatus.NOT_FOUND);
+		
+		List<UserTestDTO> userTestsDTO = new ArrayList<UserTestDTO>();
+		for (UserTest ut : userTests) {
+			if(ut.getUserProfessorUpdate() != null && ut.getUserProfessorUpdate().getId() == loggedUser.getId() && ut.getStatus().equals("EVALUATED")) {
+				userTestsDTO.add(new UserTestDTO(ut));
+			}
+			
+		}
+		return new ResponseEntity<List<UserTestDTO>>(userTestsDTO, HttpStatus.OK);
+	}
 	
 
 

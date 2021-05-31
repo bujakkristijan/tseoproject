@@ -152,6 +152,8 @@ public class UserTestController {
 		if (userTestDTO == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		double passCheck;
+		
 		UserTest userTest = userTestService.findOne(userTestDTO.getId()); 
 		User loggedUser = userService.getLoggedUser();
 		
@@ -161,6 +163,13 @@ public class UserTestController {
 		userTest.setDateUpdated(new Date());
 		userTest.setStatus("EVALUATED");
 		
+		passCheck = Double.valueOf(userTest.getPoints())/Double.valueOf(userTest.getTest().getMaxPoints());
+		if(passCheck >= 0.6) {
+			userTest.setSignedUpStatus("PASSED");
+		}
+		else {
+			userTest.setSignedUpStatus("FAILED");
+		}
 		
 		userTest = userTestService.save(userTest);// proveriti zasto ne more student = ...
 		
@@ -176,6 +185,23 @@ public class UserTestController {
 		List<UserTestDTO> userTestsDTO = new ArrayList<UserTestDTO>();
 		for (UserTest ut : userTests) {
 			if(ut.getUserProfessorUpdate() != null && ut.getUserProfessorUpdate().getId() == loggedUser.getId() && ut.getStatus().equals("EVALUATED")) {
+				userTestsDTO.add(new UserTestDTO(ut));
+			}
+			
+		}
+		return new ResponseEntity<List<UserTestDTO>>(userTestsDTO, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getMyEvaluatedUserTestsStudent", method = RequestMethod.GET)
+	public ResponseEntity<List<UserTestDTO>> getMyEvaluatedUserTestsStudent() {
+		List<UserTest> userTests = userTestService.findAll();
+		User loggedUser = userService.getLoggedUser();
+		if (userTests.equals(null))
+			return new ResponseEntity<List<UserTestDTO>>(HttpStatus.NOT_FOUND);
+		
+		List<UserTestDTO> userTestsDTO = new ArrayList<UserTestDTO>();
+		for (UserTest ut : userTests) {
+			if(ut.getUserStudentSignedUp().getId() == loggedUser.getId() && ut.getStatus().equals("EVALUATED")) {
 				userTestsDTO.add(new UserTestDTO(ut));
 			}
 			

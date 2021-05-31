@@ -71,4 +71,8 @@ export class StudentService {
     createUserTest(test: Test):Observable<Object>{
       return this.httpClient.post("http://localhost:8080/userTest/addUserTest", test);
     }
+
+    getMyEvaluatedTestList():Observable<UserTest[]>{
+      return this.httpClient.get<UserTest[]>("http://localhost:8080/userTest/getMyEvaluatedUserTestsStudent");
+    }
 }

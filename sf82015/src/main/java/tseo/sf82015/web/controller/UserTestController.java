@@ -1,5 +1,7 @@
 package tseo.sf82015.web.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,7 +75,15 @@ public class UserTestController {
 		userTest.setTest(test);
 		userTest.setUserStudentSignedUp(loggedUser);
 		//userTest.setPoints(0);
-		userTest.setDateCreated(new Date());
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		try {
+			userTest.setDateCreated(dateFormat.parse(dateFormat.format(new Date())));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//userTest.setDateCreated(new Date());
 		userTest.setStatus("N/A");
 		userTest.setSignedUpStatus("SIGNEDUP");
 		
@@ -111,6 +121,14 @@ public class UserTestController {
 		
 		for(UserTest ut: userTests) {
 			if(ut.getUserStudentSignedUp().getId() == loggedUser.getId() && ut.getStatus().equals("N/A")) {
+				/*SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+				try {
+					ut.setDateCreated(dateFormat.parse(dateFormat.format(ut.getDateCreated())));// ne treba ovako verovatno, ne radi na frontu i dalje ispisuje isto
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
+				
 				myUserTestsNotGraded.add(ut);
 			}
 		}
@@ -163,7 +181,7 @@ public class UserTestController {
 		userTest.setDateUpdated(new Date());
 		userTest.setStatus("EVALUATED");
 		
-		passCheck = Double.valueOf(userTest.getPoints())/Double.valueOf(userTest.getTest().getMaxPoints());
+		passCheck = Double.valueOf(userTest.getPoints())/Double.valueOf(userTest.getTest().getMaxPoints()); // upise ga u dobrom formatu ali kad ga cita opet kao pre
 		if(passCheck >= 0.6) {
 			userTest.setSignedUpStatus("PASSED");
 		}

@@ -18,13 +18,14 @@
       <tr *ngFor = "let userTest of myEvaluatedUserTests">
         <td>{{ userTest.test.course.name }}</td>
         <td>{{ userTest.test.title }}</td>
-        <td>{{ userTest.test.user.name + " " +  userTest.test.user.surname + " " +  userTest.test.user.role }}</td>
-        <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.surname + " " +  userTest.userStudentSignedUp.indexNum}}</td>
+        <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.indexNum }}</td>
+        <td>{{ userTest.userProfessorUpdate.name + " " +  userTest.userProfessorUpdate.name + " " +  userTest.userProfessorUpdate.role}}</td>
         <td>{{ userTest.dateCreated }}</td>
         <td>{{ userTest.dateUpdated }}</td>
         <td>{{ userTest.test.maxPoints }}</td>
         <td>{{ userTest.points }}</td>
-        <td><b>{{ userTest.signedUpStatus }}</b></td>
+        <!--<td *ngIf="userTest.signedUpStatus == 'PASSED'";bgcolor = "green"><b>{{ userTest.signedUpStatus }}</b></td> -->
+        <td [ngStyle]="{'background-color': userTest.signedUpStatus == 'PASSED' ? 'green' : 'red'}"><b>{{ userTest.signedUpStatus }}</b></td>
         <td>{{ userTest.note }}</td>
 
 

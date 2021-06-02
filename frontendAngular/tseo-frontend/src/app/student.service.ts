@@ -56,7 +56,7 @@ export class StudentService {
     }
 
     getTestsForCourse(courseDTO: Course):Observable<any>{
-      return this.httpClient.post("http://localhost:8080/test/getTestsForCourse", courseDTO);
+      return this.httpClient.post("http://localhost:8080/test/getTestsForCourseNotSignedUp", courseDTO);
     }
 
     getMyUserTestsNotGraded():Observable<UserTest[]>{

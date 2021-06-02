@@ -10,32 +10,17 @@
       </tr>
   </thead>
   <tbody>
-      <tr *ngFor = "let test of myAvailableTestsForCourse">
+      <tr *ngFor = "let test of myAvailableTestsForCourse" >
         <td>{{ test.title }}</td>
         <td>{{ test.description }}</td>
         <td>{{ test.dateCreated }}</td>
         <td>{{ test.maxPoints }}</td>
-        <!--
+
+
         <td>
           <button (click) = "goToSignUpForTest(test.id)" class="btn btn-info"> Sign up for test </button>
         </td>
-      -->
 
-        <td *ngIf="myUserTests.length == 0">
-          <button (click) = "goToSignUpForTest(test.id)" class="btn btn-info"> Sign up for test </button>
-        </td>
-
-        <td *ngFor = "let userTest of myUserTests">
-
-
-          <div *ngIf="userTest.test.id == test.id;then content else other_content">here is ignored</div>
-            <ng-template #content><label>Already signed up</label></ng-template>
-            <ng-template #other_content><button (click) = "goToSignUpForTest(test.id)" class="btn btn-info"> Sign up for test </button></ng-template>
-
-
-        </td>
-        <!-- TREBA RESITI DA NE ISPISUJE STALNO NOVE BUTTONE KAKO VRTI FOR PETLJU-->
-      </tr>
   </tbody>
 </table>
 <tr></tr>

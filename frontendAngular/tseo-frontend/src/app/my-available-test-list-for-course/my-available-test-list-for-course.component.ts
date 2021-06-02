@@ -22,12 +22,14 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
   loggedUser: User;
 
 
+
   course: Course = new Course();
   constructor(private courseService: CourseService,
     private router: Router, private studentService: StudentService, private route: ActivatedRoute,
     private appComponent: AppComponent) { }
 
   ngOnInit(): void {
+
 
     this.getLoggedUser();
     this.getSelectedCourse();
@@ -62,5 +64,6 @@ export class MyAvailableTestListForCourseComponent implements OnInit {
   getLoggedUser(){
     this.loggedUser = this.appComponent.loggedUser;
   }
+
 
 }

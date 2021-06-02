@@ -23,6 +23,7 @@ import tseo.sf82015.model.UserTest;
 import tseo.sf82015.service.CourseService;
 import tseo.sf82015.service.TestService;
 import tseo.sf82015.service.UserService;
+import tseo.sf82015.service.UserTestService;
 import tseo.sf82015.web.dto.CourseDTO;
 import tseo.sf82015.web.dto.TestDTO;
 @CrossOrigin(origins = "http://localhost:4200")
@@ -38,6 +39,9 @@ public class TestController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	UserTestService userTestService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<TestDTO> getTest(@PathVariable Long id) {
@@ -165,6 +169,59 @@ public class TestController {
 		List<TestDTO> allTestsForCourseDTO = new ArrayList<TestDTO>();
 		
 		for(Test t: allTests) {
+			if(t.getCourse().getId() == course.getId()) {
+				allTestsForCourse.add(t);
+			}
+		}
+		
+		for(Test t: allTestsForCourse) {
+			allTestsForCourseDTO.add(new TestDTO(t));
+		}
+		
+		
+		return new ResponseEntity<List<TestDTO>>(allTestsForCourseDTO, HttpStatus.OK);
+		
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200") // preko post metode saljem testove, zato sto saljem courseId, ne uzimam iz putanje
+	@RequestMapping(value = "/getTestsForCourseNotSignedUp", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<TestDTO>> getTestsForCourseNotSignedUp(@RequestBody Course courseDTO) {
+		if(courseDTO == null) {
+			return new ResponseEntity<List<TestDTO>>(HttpStatus.BAD_REQUEST);
+		}
+		Course course = courseService.findOne(courseDTO.getId());
+		
+		if (course == null) 
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		
+		List<Test> allTests = testService.findAll();
+		List<Test> allTestsForCourse = new ArrayList<Test>();
+		List<UserTest> userTests = userTestService.findAll();
+		List<UserTest> myUserTests = new ArrayList<UserTest>();
+		List<Test> AllMyTestsNotSignedUp = new ArrayList<Test>();
+		List<TestDTO> allTestsForCourseDTO = new ArrayList<TestDTO>();
+		
+		User loggedUser = userService.getLoggedUser();
+		
+		for(UserTest ut: userTests) {
+			if(loggedUser.getId() == ut.getUserStudentSignedUp().getId()) {
+				myUserTests.add(ut);
+			}
+		}
+		int alreadyExist = 0;
+		for(Test t: allTests) {
+			for(UserTest ut: myUserTests) {
+				if(ut.getTest().getId() == t.getId()) {
+					alreadyExist = 1;
+				}
+			}
+			if(alreadyExist == 0) {
+				AllMyTestsNotSignedUp.add(t);
+			}
+			alreadyExist = 0;
+		}
+		
+		for(Test t: AllMyTestsNotSignedUp) {
 			if(t.getCourse().getId() == course.getId()) {
 				allTestsForCourse.add(t);
 			}

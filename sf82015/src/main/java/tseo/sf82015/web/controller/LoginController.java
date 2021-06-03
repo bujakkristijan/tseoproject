@@ -79,15 +79,17 @@ public class LoginController {
 		return new ResponseEntity<UserDTO>(userDTO, HttpStatus.OK);
 	}
 	
-	
-	@RequestMapping(value = "/logout", method = RequestMethod.POST)
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ResponseEntity<LoginDTO> logout() {
 		//if(userService.getCurrentUser() != null)
 		//	SecurityContextHolder.clearContext();
 		if(userService.getLoggedUser() != null) {
-			userService.setCurrentUser(null);
+			userService.setLoggedUser(null);
 		}
 		LoginDTO loginDTO = new LoginDTO();
+		//loginDTO.setEmail("NULL");
+		//loginDTO.setPassword("NULL");
 			
 		return new ResponseEntity<LoginDTO>(loginDTO, HttpStatus.OK);
 	}

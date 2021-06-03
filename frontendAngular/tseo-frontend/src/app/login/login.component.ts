@@ -1,3 +1,4 @@
+import { User } from './../user';
 import { AppComponent } from './../app.component';
 import { LoginService } from './../login.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginInput: Login = new Login();
+  loggedUser: User;
+  role: String;
   //loginInput: Login;
   constructor(private loginService: LoginService, private router: Router, private appComponent: AppComponent) { }
 
@@ -21,7 +24,19 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     this.loginService.loginSendParams(this.loginInput).subscribe(data =>{
 
-      this.goToStudentList();
+      this.loginService.getLoggedUser().subscribe(data =>{
+
+        this.appComponent.getLoggedUser(); // da bi mi u navbaru ispisivalo jer je u app componenti
+        this.loggedUser = data;
+        this.routeDependingOnRole();
+
+        //this.roleCheck();
+
+      });
+
+
+      console.log(this.role);
+      //this.goToStudentList();
 
     });
     //this.appComponent.getLoggedUser();
@@ -36,5 +51,17 @@ export class LoginComponent implements OnInit {
      // this.appComponent.signOut();
     });
   }
+  routeDependingOnRole(){
+    if(this.loggedUser.role == "STUDENT"){
+      this.router.navigate(['available-course-list']);
+       }
+       if(this.loggedUser.role == "PROFESSOR" || this.loggedUser.role == "TEACHING_ASSISTANT" || this.loggedUser.role == "DEMONSTRATOR"){
+        this.router.navigate(['professor-my-course-list']);
 
+      }
+      if(this.loggedUser.role == "ADMIN"){
+        this.router.navigate(['students']);
+
+      }
+  }
 }

@@ -208,6 +208,8 @@ public class TestController {
 				myUserTests.add(ut);
 			}
 		}
+		
+		//ako vec postoji usertest, znaci da je prijavljen vec, onda ne dodajem taj test u listu
 		int alreadyExist = 0;
 		for(Test t: allTests) {
 			for(UserTest ut: myUserTests) {

@@ -123,5 +123,61 @@ public class UserCourseController {
 		userCourseService.delete(userCourse);
 		return new ResponseEntity<UserCourseDTO>(HttpStatus.OK);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "students/{courseId}", method = RequestMethod.GET)
+	public ResponseEntity<List<UserCourseDTO>> getUserCoursesOnCourse(@PathVariable Long courseId) {
+		
+		if (courseService.findOne(courseId) == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}	
+		Course course = courseService.findOne(courseId);
+		List<UserCourse> userCourses = new ArrayList<UserCourse>();
+		List<UserCourse> studentsOnCourse = new ArrayList<UserCourse>();
+		userCourses = userCourseService.findAll();
+		
+		for(UserCourse uc: userCourses) {
+			if(uc.getCourse().getId() == course.getId() && uc.getUser().getRole().equals("STUDENT")) {
+				studentsOnCourse.add(uc);
+			}
+		}
+		List<UserCourseDTO> studentsOnCourseDTO = new ArrayList<UserCourseDTO>();
+		
+		for(UserCourse uc: studentsOnCourse) {
+			studentsOnCourseDTO.add(new UserCourseDTO(uc));
+		}
+		
+		return new ResponseEntity<List<UserCourseDTO>>(studentsOnCourseDTO, HttpStatus.OK);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "professors/{courseId}", method = RequestMethod.GET)
+	public ResponseEntity<List<UserCourseDTO>> getProfessorCoursesOnCourse(@PathVariable Long courseId) {
+		
+		if (courseService.findOne(courseId) == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}	
+		Course course = courseService.findOne(courseId);
+		List<UserCourse> userCourses = new ArrayList<UserCourse>();
+		List<UserCourse> professorsOnCourse = new ArrayList<UserCourse>();
+		userCourses = userCourseService.findAll();
+		
+		for(UserCourse uc: userCourses) {
+			if(uc.getCourse().getId() == course.getId()) {
+				if(uc.getUser().getRole().equals("PROFESSOR") || uc.getUser().getRole().equals("TEACHING_ASSISTANT")
+						|| uc.getUser().getRole().equals("DEMONSTRATOR")) {
+					professorsOnCourse.add(uc);
+				}
+				
+			}
+		}
+		List<UserCourseDTO> professorsOnCourseDTO = new ArrayList<UserCourseDTO>();
+		
+		for(UserCourse uc: professorsOnCourse) {
+			professorsOnCourseDTO.add(new UserCourseDTO(uc));
+		}
+		
+		return new ResponseEntity<List<UserCourseDTO>>(professorsOnCourseDTO, HttpStatus.OK);
+	}
 
 }

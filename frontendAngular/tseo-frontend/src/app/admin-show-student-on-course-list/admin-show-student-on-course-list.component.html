@@ -1,0 +1,38 @@
+<h2>Students on course list</h2>
+<table class = "table table-striped"> <!--class = "table table-striped"-->
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> Student name</th>
+          <th> Student surname</th>
+          <th> Index number </th>
+          <th> Date added </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let studentCourse of studentsOnCourse">
+        <td>{{ studentCourse.course.name }}</td>
+        <td>{{ studentCourse.user.name }}</td>
+        <td>{{ studentCourse.user.surname }}</td>
+        <td>{{ studentCourse.user.indexNum }}</td>
+        <td>{{ studentCourse.dateAdded }}</td>
+
+        <td>
+        <!--
+          <button (click) = "updateCourse(course.id)" class="btn btn-info"> Update </button>
+          <button (click) = "courseDetails(course.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
+        -->
+        <!--
+          <button (click) = "deleteStudentCourse(studentCourse.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+
+        -->
+
+
+
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+

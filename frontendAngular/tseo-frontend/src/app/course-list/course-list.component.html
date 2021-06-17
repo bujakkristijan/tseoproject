@@ -19,9 +19,10 @@
 
           <button (click) = "updateCourse(course.id)" class="btn btn-info"> Update </button>
           <button (click) = "deleteCourse(course.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
-          <!--
-          <button (click) = "courseDetails(course.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
-          -->
+          <button (click) = "goToStudentsOnCourse(course.id)" class="btn btn-info" style="margin-left: 10px"> Students </button>
+          <button (click) = "goToProfessorsOnCourse(course.id)" class="btn btn-info" style="margin-left: 10px"> Professors </button>
+          <button (click) = "goToPaymentsForCourse(course.id)" class="btn btn-info" style="margin-left: 10px"> Payments </button>
+
         </td>
 
       </tr>

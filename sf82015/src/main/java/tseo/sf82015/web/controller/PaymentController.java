@@ -19,11 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 import tseo.sf82015.model.Course;
 import tseo.sf82015.model.Payment;
 import tseo.sf82015.model.User;
+import tseo.sf82015.model.UserCourse;
 import tseo.sf82015.service.CourseService;
 import tseo.sf82015.service.PaymentService;
 import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.CourseDTO;
 import tseo.sf82015.web.dto.PaymentDTO;
+import tseo.sf82015.web.dto.UserCourseDTO;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "payment")
@@ -34,6 +36,9 @@ public class PaymentController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	CourseService courseService;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<PaymentDTO> getPayment(@PathVariable Long id) {
@@ -119,6 +124,32 @@ public class PaymentController {
 		}
 		return new ResponseEntity<List<PaymentDTO>>(myPaymentsDTO, HttpStatus.OK);
 		
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "payments/{courseId}", method = RequestMethod.GET)
+	public ResponseEntity<List<PaymentDTO>> getPaymentsForCourse(@PathVariable Long courseId) {
+		
+		if (courseService.findOne(courseId) == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}	
+		Course course = courseService.findOne(courseId);
+		List<Payment> payments = new ArrayList<Payment>();
+		List<Payment> paymentsForCourse = new ArrayList<Payment>();
+		payments = paymentService.findAll();
+		
+		for(Payment p: payments) {
+			if(p.getCourse().getId() == course.getId() && p.getUser().getRole().equals("STUDENT")) {
+				paymentsForCourse.add(p);
+			}
+		}
+		List<PaymentDTO> paymentsForCourseDTO = new ArrayList<PaymentDTO>();
+		
+		for(Payment p: paymentsForCourse) {
+			paymentsForCourseDTO.add(new PaymentDTO(p));
+		}
+		
+		return new ResponseEntity<List<PaymentDTO>>(paymentsForCourseDTO, HttpStatus.OK);
 	}
 
 }

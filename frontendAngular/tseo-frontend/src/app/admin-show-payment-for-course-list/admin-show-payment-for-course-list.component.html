@@ -1,0 +1,42 @@
+<h2>Payments of course list</h2>
+<table class = "table table-striped"> <!--class = "table table-striped"-->
+  <thead>
+      <tr>
+          <th> Course </th>
+          <th> Student name</th>
+          <th> Student surname</th>
+          <th> Index number </th>
+          <th> Date payed </th>
+          <th> Amount </th>
+          <th> Recipient number </th>
+          <th> Actions </th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let paymentCourse of paymentsForCourse">
+        <td>{{ paymentCourse.course.name }}</td>
+        <td>{{ paymentCourse.user.name }}</td>
+        <td>{{ paymentCourse.user.surname }}</td>
+        <td>{{ paymentCourse.user.indexNum }}</td>
+        <td>{{ paymentCourse.datePayed }}</td>
+        <td>{{ paymentCourse.amount }}</td>
+        <td>{{ paymentCourse.recipientNumber }}</td>
+
+        <td>
+        <!--
+          <button (click) = "updateCourse(course.id)" class="btn btn-info"> Update </button>
+          <button (click) = "courseDetails(course.id)" class="btn btn-info" style="margin-left: 10px"> View </button>
+        -->
+        <!--
+          <button (click) = "deleteStudentCourse(studentCourse.id)" class="btn btn-danger" style="margin-left: 10px"> Delete </button>
+
+        -->
+
+
+
+        </td>
+
+      </tr>
+  </tbody>
+</table>
+

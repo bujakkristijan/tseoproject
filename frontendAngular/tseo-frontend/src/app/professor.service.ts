@@ -1,3 +1,4 @@
+import { UserCourse } from './user-course';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -66,5 +67,11 @@ export class ProfessorService {
   getMyEvaluatedTestList():Observable<UserTest[]>{
     return this.httpClient.get<UserTest[]>("http://localhost:8080/userTest/getAllEvaluatedUserTests");
   }
+
+  getUserCoursesByCourseId(courseId: number):Observable<UserCourse[]>{
+    return this.httpClient.get<UserCourse[]>(`http://localhost:8080/userCourse/professors/${courseId}`); // pored 1 znak mora
+  }
+
+
 
 }

@@ -39,4 +39,16 @@ export class CourseListComponent implements OnInit {
     })
   }
 
+  goToStudentsOnCourse(id: number){
+    this.router.navigate(['admin-show-student-on-course-list', id]);
+  }
+
+  goToProfessorsOnCourse(id: number){
+    this.router.navigate(['admin-show-professor-on-course-list', id]);
+  }
+
+  goToPaymentsForCourse(id: number){
+    this.router.navigate(['admin-show-payment-for-course-list', id]);
+  }
+
 }

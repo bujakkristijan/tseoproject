@@ -75,4 +75,12 @@ export class StudentService {
     getMyEvaluatedTestList():Observable<UserTest[]>{
       return this.httpClient.get<UserTest[]>("http://localhost:8080/userTest/getMyEvaluatedUserTestsStudent");
     }
+    // za admina
+    getUserCoursesByCourseId(courseId: number):Observable<UserCourse[]>{
+      return this.httpClient.get<UserCourse[]>(`http://localhost:8080/userCourse/students/${courseId}`);
+    }
+
+    getPaymentsByCourseId(courseId: number):Observable<Payment[]>{
+      return this.httpClient.get<Payment[]>(`http://localhost:8080/payment/payments/${courseId}`)
+    }
 }

@@ -35,6 +35,9 @@ import { ProfessorSignedUpTestListComponent } from './professor-signed-up-test-l
 import { ProfessorEvaluateUserTestComponent } from './professor-evaluate-user-test/professor-evaluate-user-test.component';
 import { ProfessorMyEvaluatedTestListComponent } from './professor-my-evaluated-test-list/professor-my-evaluated-test-list.component';
 import { StudentMyEvaluatedTestListComponent } from './student-my-evaluated-test-list/student-my-evaluated-test-list.component';
+import { AdminShowStudentOnCourseListComponent } from './admin-show-student-on-course-list/admin-show-student-on-course-list.component';
+import { AdminShowProfessorOnCourseListComponent } from './admin-show-professor-on-course-list/admin-show-professor-on-course-list.component';
+import { AdminShowPaymentForCourseListComponent } from './admin-show-payment-for-course-list/admin-show-payment-for-course-list.component';
 
 
 @NgModule({
@@ -69,6 +72,9 @@ import { StudentMyEvaluatedTestListComponent } from './student-my-evaluated-test
     ProfessorEvaluateUserTestComponent,
     ProfessorMyEvaluatedTestListComponent,
     StudentMyEvaluatedTestListComponent,
+    AdminShowStudentOnCourseListComponent,
+    AdminShowProfessorOnCourseListComponent,
+    AdminShowPaymentForCourseListComponent,
 
 
   ],

@@ -46,4 +46,8 @@ export class StudentListComponent implements OnInit {
     this.router.navigate(['student-details', id]);
   }
 
+  goToCreateStudent(){
+    this.router.navigate(['create-student']);
+  }
+
 }

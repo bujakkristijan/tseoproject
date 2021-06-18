@@ -23,7 +23,10 @@ export class AdminShowStudentOnCourseListComponent implements OnInit {
     this.getStudentsOnCourse();
   }
 
-  deleteStudentCourse(){
+  deleteStudentCourse(studentCourseId: number){
+    this.studentService.deleteStudentCourse(studentCourseId).subscribe(data =>{
+      this.getStudentsOnCourse();
+    });
 
   }
 

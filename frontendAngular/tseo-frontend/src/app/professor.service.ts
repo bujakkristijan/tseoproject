@@ -72,6 +72,10 @@ export class ProfessorService {
     return this.httpClient.get<UserCourse[]>(`http://localhost:8080/userCourse/professors/${courseId}`); // pored 1 znak mora
   }
 
+  deleteProfessorCourse(professorCourseId: number):Observable<Object>{
+    return this.httpClient.delete("http://localhost:8080/userCourse/delete/"+ professorCourseId);
+  }
+
 
 
 }

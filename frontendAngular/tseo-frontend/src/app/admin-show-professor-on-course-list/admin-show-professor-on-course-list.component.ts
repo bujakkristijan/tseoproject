@@ -23,7 +23,10 @@ export class AdminShowProfessorOnCourseListComponent implements OnInit {
     this.getProfessorsOnCourse();
   }
 
-  deleteStudentCourse(){
+  deleteProfessorCourse(professorCourseId: number){
+    this.professorService.deleteProfessorCourse(professorCourseId).subscribe(data =>{
+      this.getProfessorsOnCourse();
+    });
 
   }
 

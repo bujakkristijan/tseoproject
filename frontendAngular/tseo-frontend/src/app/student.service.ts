@@ -83,4 +83,8 @@ export class StudentService {
     getPaymentsByCourseId(courseId: number):Observable<Payment[]>{
       return this.httpClient.get<Payment[]>(`http://localhost:8080/payment/payments/${courseId}`)
     }
+
+    deleteStudentCourse(studentCourseId: number):Observable<Object>{
+      return this.httpClient.delete("http://localhost:8080/userCourse/delete/"+ studentCourseId);
+    }
 }

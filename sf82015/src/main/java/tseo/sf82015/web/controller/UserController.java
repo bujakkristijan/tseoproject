@@ -17,6 +17,7 @@ import tseo.sf82015.model.Role;
 import tseo.sf82015.model.User;
 import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.LoginDTO;
+import tseo.sf82015.web.dto.PaymentDTO;
 import tseo.sf82015.web.dto.UserDTO;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -92,6 +93,10 @@ public class UserController {
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) {
 		if(userDTO == null) {
+			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+		}
+		
+		if(userDTO.getRole().equals("STUDENT") && userDTO.getIndexNum() == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
 		

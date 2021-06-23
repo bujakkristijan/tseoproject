@@ -18,7 +18,7 @@
         <td>{{ paymentCourse.user.name }}</td>
         <td>{{ paymentCourse.user.surname }}</td>
         <td>{{ paymentCourse.user.indexNum }}</td>
-        <td>{{ paymentCourse.datePayed }}</td>
+        <td>{{ paymentCourse.datePayed | date: 'medium'}}</td>
         <td>{{ paymentCourse.amount }}</td>
         <td>{{ paymentCourse.recipientNumber }}</td>
 

@@ -16,7 +16,7 @@
         <td>{{ studentCourse.user.name }}</td>
         <td>{{ studentCourse.user.surname }}</td>
         <td>{{ studentCourse.user.indexNum }}</td>
-        <td>{{ studentCourse.dateAdded }}</td>
+        <td>{{ studentCourse.dateAdded | date: 'medium' }}</td>
 
         <td>
         <!--

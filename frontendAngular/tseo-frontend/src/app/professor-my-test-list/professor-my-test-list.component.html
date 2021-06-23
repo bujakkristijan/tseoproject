@@ -14,7 +14,7 @@
       <tr *ngFor = "let test of myTests">
         <td>{{ test.course.name }}</td>
         <td>{{ test.title }}</td>
-        <td>{{ test.dateCreated }}</td>
+        <td>{{ test.dateCreated | date: 'medium' }}</td>
         <td>{{ test.description }}</td>
         <td>{{ test.maxPoints }}</td>
         <td>

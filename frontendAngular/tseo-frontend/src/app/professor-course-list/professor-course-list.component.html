@@ -16,7 +16,7 @@
         <td>{{ professorCourse.user.name }}</td>
         <td>{{ professorCourse.user.surname }}</td>
         <td>{{ professorCourse.user.role }}</td>
-        <td>{{ professorCourse.dateAdded }}</td>
+        <td>{{ professorCourse.dateAdded | date: 'medium' }}</td> <!-- 'medium': equivalent to 'MMM d, y, h:mm:ss a' (Jun 15, 2015, 9:03:01 AM). -->
 
         <td>
         <!--

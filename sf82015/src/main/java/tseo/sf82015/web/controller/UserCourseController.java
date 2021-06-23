@@ -71,6 +71,12 @@ public class UserCourseController {
 		if(userCourseDTO == null) {
 			return new ResponseEntity<UserCourseDTO>(HttpStatus.BAD_REQUEST);
 		}
+		if(userCourseDTO.getCourse() == null) {
+			return new ResponseEntity<UserCourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(userCourseDTO.getUser() == null) {
+			return new ResponseEntity<UserCourseDTO>(HttpStatus.BAD_REQUEST);
+		}
 		UserCourse userCourse = new UserCourse();
 		System.out.println(userCourseDTO.getCourse().getName() + "/////" + userCourseDTO.getUser().getName());
 		userCourse.setCourse(userCourseDTO.getCourse());

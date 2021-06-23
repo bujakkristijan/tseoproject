@@ -19,8 +19,8 @@
         <td>{{ userTest.test.title }}</td>
         <td>{{ userTest.test.user.name + " " +  userTest.test.user.surname + " " +  userTest.test.user.role }}</td>
         <td>{{ userTest.userStudentSignedUp.name + " " +  userTest.userStudentSignedUp.surname + " " +  userTest.userStudentSignedUp.indexNum}}</td>
-        <td>{{ userTest.dateCreated }}</td>
-        <td>{{ userTest.dateUpdated }}</td>
+        <td>{{ userTest.dateCreated | date:'medium' }}</td>
+        <td>{{ userTest.dateUpdated | date:'medium' }}</td>
         <td>{{ userTest.test.maxPoints }}</td>
         <td>{{ userTest.points }}</td>
 

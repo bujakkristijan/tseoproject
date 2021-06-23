@@ -69,6 +69,9 @@ public class PaymentController {
 		if(paymentDTO == null) {
 			return new ResponseEntity<PaymentDTO>(HttpStatus.BAD_REQUEST);
 		}
+		if(paymentDTO.getCourse() == null) {
+			return new ResponseEntity<PaymentDTO>(HttpStatus.BAD_REQUEST);
+		}
 		//User userLogged = userService.getCurrentUser();
 		User userLogged = userService.getLoggedUser();
 		

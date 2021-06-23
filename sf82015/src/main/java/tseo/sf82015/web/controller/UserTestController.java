@@ -174,7 +174,9 @@ public class UserTestController {
 		
 		UserTest userTest = userTestService.findOne(userTestDTO.getId()); 
 		User loggedUser = userService.getLoggedUser();
-		
+		if(userTestDTO.getPoints() > userTestDTO.getTest().getMaxPoints() || userTestDTO.getPoints() < 0) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		userTest.setPoints(userTestDTO.getPoints());
 		userTest.setNote(userTestDTO.getNote());
 		userTest.setUserProfessorUpdate(loggedUser);

@@ -99,12 +99,14 @@ public class UserController {
 		if(userDTO.getRole().equals("STUDENT") && userDTO.getIndexNum() == null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		
+		if(userDTO.getEmail() == null) {
+			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+		}
 		if(userService.findByEmail(userDTO.getEmail()) != null){
 			return new ResponseEntity<UserDTO>(HttpStatus.FORBIDDEN);
 		}
 		
-		if(userService.findByIndexNum(userDTO.getIndexNum()) != null){
+		if(userDTO.getRole().equals("STUDENT") && userService.findByIndexNum(userDTO.getIndexNum()) != null){
 			return new ResponseEntity<UserDTO>(HttpStatus.FORBIDDEN);
 		}
 		User user = new User();

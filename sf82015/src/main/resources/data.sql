@@ -18,7 +18,7 @@ values (2, "002","Course description 2", "Programiranje", 3000);
 
 insert into sf82015.course (id, code, description, name, price) 
 values (3, "003","Course description 3", "Muzicko", 2500);
-
+/*
 insert into sf82015.user_course (id, date_added, course_id, user_id) 
 values (1, null, 1, 3);
 
@@ -27,18 +27,20 @@ values (2, null, 2, 3);
 
 insert into sf82015.user_course (id, date_added, course_id, user_id) 
 values (3, null, 1, 2);
-
+*/
+/*
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (1, 2000, 213213, null, 21312312, 1, 2);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (2, 3000, 213213, null, 21312312, 2, 2);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (3, 2000, 213213, null, 21312312, 1, 2);
-
+*/
 /* za marka paymenti */
+/*
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (5, 1500, 213213, null, 21312312, 1, 1);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (6, 1000, 213213, null, 21312312, 1, 1);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (7, 1000, 213213, null, 21312312, 3, 1);
 insert into sf82015.payment (id, amount, card_number, date_payed, recipient_number, course_id, user_id) values (8, 1000, 213213, null, 21312312, 3, 1);
-
+*/
 
 /*insert into sf82015.user_test (id, date_created, date_updated, note, points, signed_up_status, status, test_id, user_professor_update_id, user_student_signed_up_id  ) values (1, null, null, null, 20, null, "N/A", null, 1, 1);
 */
-select * from sf82015.user;
+/*select * from sf82015.user; */

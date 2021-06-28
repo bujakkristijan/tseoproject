@@ -72,6 +72,16 @@ public class TestController {
 		if(testDTO == null) {
 			return new ResponseEntity<TestDTO>(HttpStatus.BAD_REQUEST);
 		}
+		if(testDTO.getTitle() == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		if(testDTO.getTitle() == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		if(testDTO.getMaxPoints() < 0) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		Course course = courseService.findOne(testDTO.getCourse().getId());
 		List<UserTest> userTests = new ArrayList<UserTest>();
 		

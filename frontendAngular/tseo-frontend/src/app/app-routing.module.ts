@@ -1,3 +1,4 @@
+import { ProfessorUpdateTestComponent } from './professor-update-test/professor-update-test.component';
 import { AdminShowPaymentForCourseListComponent } from './admin-show-payment-for-course-list/admin-show-payment-for-course-list.component';
 import { AdminShowProfessorOnCourseListComponent } from './admin-show-professor-on-course-list/admin-show-professor-on-course-list.component';
 import { AdminShowStudentOnCourseListComponent } from './admin-show-student-on-course-list/admin-show-student-on-course-list.component';
@@ -68,7 +69,8 @@ const routes: Routes = [
   {path: 'student-my-evaluated-test-list', component: StudentMyEvaluatedTestListComponent},
   {path: 'admin-show-student-on-course-list/:id', component: AdminShowStudentOnCourseListComponent},
   {path: 'admin-show-professor-on-course-list/:id', component: AdminShowProfessorOnCourseListComponent},
-  {path: 'admin-show-payment-for-course-list/:id', component: AdminShowPaymentForCourseListComponent}
+  {path: 'admin-show-payment-for-course-list/:id', component: AdminShowPaymentForCourseListComponent},
+  {path: 'professor-update-test/:id', component: ProfessorUpdateTestComponent}
 
 ];
 

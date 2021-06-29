@@ -75,9 +75,6 @@ public class TestController {
 		if(testDTO.getTitle() == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		if(testDTO.getTitle() == null) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
 		
 		if(testDTO.getMaxPoints() < 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -119,6 +116,13 @@ public class TestController {
 	public ResponseEntity<TestDTO> edit(@RequestBody TestDTO testDTO) {
 		Test test = testService.findOne(testDTO.getId()); 
 		if (test == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		if(testDTO.getTitle() == null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		
+		if(testDTO.getMaxPoints() < 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		

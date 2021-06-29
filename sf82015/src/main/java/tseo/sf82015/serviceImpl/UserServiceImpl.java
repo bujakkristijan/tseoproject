@@ -3,6 +3,7 @@ package tseo.sf82015.serviceImpl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			Long id = Long.parseLong(auth.getName());
 			return userRepository.getOne(id);
+			//return userRepository.findById(id);
 		} catch (Exception e) {
 			return null;
 		}

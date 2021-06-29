@@ -50,7 +50,7 @@ public class Test implements Serializable{
 		this.user = user;
 	}
 	@JsonBackReference
-	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER, cascade=CascadeType.REFRESH)
+	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<UserTest> userTests= new ArrayList<UserTest>();
 	
 	public Test() {}

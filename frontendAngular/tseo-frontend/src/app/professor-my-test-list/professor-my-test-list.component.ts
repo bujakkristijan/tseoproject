@@ -29,4 +29,14 @@ export class ProfessorMyTestListComponent implements OnInit {
     this.router.navigate(['professor-signed-up-test-list', id]);
   }
 
+  goToUpdateTest(id: number){
+    this.router.navigate(['professor-update-test', id]);
+  }
+
+  deleteTest(id: number){
+    this.professorService.deleteTest(id).subscribe(data =>{
+      this.getMyTestList();
+    });
+  }
+
 }

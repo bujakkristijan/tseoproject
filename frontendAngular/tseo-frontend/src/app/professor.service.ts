@@ -76,6 +76,14 @@ export class ProfessorService {
     return this.httpClient.delete("http://localhost:8080/userCourse/delete/"+ professorCourseId);
   }
 
+  updateTest(test: Test):Observable<Object>{
+    return this.httpClient.put("http://localhost:8080/test/edit", test);
+  }
+
+  deleteTest(testId: number):Observable<Object>{
+    return this.httpClient.delete("http://localhost:8080/test/delete/"+testId);
+  }
+
 
 
 }

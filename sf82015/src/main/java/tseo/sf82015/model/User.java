@@ -61,6 +61,10 @@ public class User implements Serializable {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Test> tests= new ArrayList<Test>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Payment> payments= new ArrayList<Payment>(); // dodato da bi mi brisao i paymente kad obirse usera
+	
 	public User() {}
 	
 	public User(String name, String surname, String indexNum, String email, String password, String role) {

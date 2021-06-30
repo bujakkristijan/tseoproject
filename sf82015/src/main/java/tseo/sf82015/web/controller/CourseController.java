@@ -24,6 +24,7 @@ import tseo.sf82015.service.UserCourseService;
 import tseo.sf82015.service.UserService;
 import tseo.sf82015.web.dto.CourseDTO;
 import tseo.sf82015.web.dto.CourseWithSubscribeInfoDTO;
+import tseo.sf82015.web.dto.PaymentDTO;
 import tseo.sf82015.web.dto.UserDTO;
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -71,6 +72,15 @@ public class CourseController {
 	@RequestMapping(value = "/addCourse", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<CourseDTO> addCourse(@RequestBody CourseDTO courseDTO) {
 		if(courseDTO == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(courseDTO.getName() == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(courseDTO.getCode() == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(courseDTO.getPrice() < 0) {
 			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
 		Course course = new Course();

@@ -105,6 +105,15 @@ public class CourseController {
 		if (course == null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
+		if(courseDTO.getName() == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(courseDTO.getCode() == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(courseDTO.getPrice() < 0) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
 		
 		course.setName(courseDTO.getName());
 		course.setCode(courseDTO.getCode()); 

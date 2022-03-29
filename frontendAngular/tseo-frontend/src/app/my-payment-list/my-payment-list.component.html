@@ -1,7 +1,9 @@
-<h2>Payment list</h2>
+<h3>Payment list</h3>
+<div style="height:400px; width:100%; overflow:auto;">
+
 <table class = "table table-striped">
   <thead>
-      <tr>
+      <tr class="table-header">
           <th> Course </th>
           <th> User </th>
           <th> Date Payed </th>
@@ -26,6 +28,8 @@
 
   </tbody>
 </table>
+
+</div>
 
 <button (click) = "goToCreatePayment()" class="btn btn-success"> Add new payment </button>
 

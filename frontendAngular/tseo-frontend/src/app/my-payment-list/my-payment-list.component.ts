@@ -23,7 +23,7 @@ export class MyPaymentListComponent implements OnInit {
     });
   }
 
-  goToCreatePayment(){ // ne znam zasto more public da stoji, nece kad je private
+  goToCreatePayment(){
     this.router.navigate(['create-payment']);
   }
 

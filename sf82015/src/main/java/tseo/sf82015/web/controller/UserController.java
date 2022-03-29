@@ -8,11 +8,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+
+
 import tseo.sf82015.model.Role;
 import tseo.sf82015.model.User;
 import tseo.sf82015.service.UserService;
@@ -36,6 +40,15 @@ public class UserController {
 	
 		return new ResponseEntity<UserDTO>(new UserDTO(user), HttpStatus.OK);
 	}
+	/*
+	@GetMapping("/appointmentss")
+	public List<User> getAppointments(){
+		List<User> appointmentList = new ArrayList<User>();
+		appointmentList.add(new User( "marko", "markovic", "index", "email", "password", "role"));
+		appointmentList.add(new User( "marko", "markovic", "index", "email", "password", "role"));
+		return appointmentList;
+	}
+	*/
 
 	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> getUsers() {
@@ -96,10 +109,19 @@ public class UserController {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
 		
-		if(userDTO.getRole().equals("STUDENT") && userDTO.getIndexNum() == null) {
+		if(userDTO.getRole().equals("STUDENT") && ((userDTO.getIndexNum() == null) || userDTO.getIndexNum().trim().isEmpty())) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
-		if(userDTO.getEmail() == null) {
+		//if(userDTO.getName() == null || userDTO.getName().equals("")) {
+		//	return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+		//}
+		if(userDTO.getName() == null || userDTO.getName().trim().isEmpty()) { //kad pitam equals("") dopusta spaceove
+			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(userDTO.getSurname() == null || userDTO.getSurname().trim().isEmpty()) {
+			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
+		}
+		if(userDTO.getEmail() == null || userDTO.getEmail().trim().isEmpty()) {
 			return new ResponseEntity<UserDTO>(HttpStatus.BAD_REQUEST);
 		}
 		if(userService.findByEmail(userDTO.getEmail()) != null){
@@ -107,6 +129,9 @@ public class UserController {
 		}
 		
 		if(userDTO.getRole().equals("STUDENT") && userService.findByIndexNum(userDTO.getIndexNum()) != null){
+			return new ResponseEntity<UserDTO>(HttpStatus.FORBIDDEN);
+		}
+		if(userService.findByEmail(userDTO.getEmail()) != null) {
 			return new ResponseEntity<UserDTO>(HttpStatus.FORBIDDEN);
 		}
 		User user = new User();

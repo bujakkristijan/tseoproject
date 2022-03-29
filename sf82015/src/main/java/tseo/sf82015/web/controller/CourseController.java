@@ -74,21 +74,27 @@ public class CourseController {
 		if(courseDTO == null) {
 			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
-		if(courseDTO.getName() == null) {
+		if(courseDTO.getName() == null || courseDTO.getName().equals("")) {
 			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
-		if(courseDTO.getCode() == null) {
+		if(courseDTO.getCode() == null || courseDTO.getCode().equals("")) {
 			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
 		if(courseDTO.getPrice() < 0) {
 			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
 		}
+		if(courseDTO.getDescription() == null) {
+			return new ResponseEntity<CourseDTO>(HttpStatus.BAD_REQUEST);
+		}
+		
 		Course course = new Course();
 		
 		course.setName(courseDTO.getName());
 		course.setCode(courseDTO.getCode()); 
-		course.setPrice(courseDTO.getPrice());
+		course.setPrice(courseDTO.getPrice());	
 		course.setDescription(courseDTO.getDescription());
+		
+		
 		
 		course = courseService.save(course);
 		
@@ -192,7 +198,7 @@ public class CourseController {
 		//		myUserCourses.add(uc);
 		//	}
 		//}
-		// uzimam sve moje user courseve
+		// uzimam sve moje user courseve, na koje je vec pretplacen
 		for(UserCourse uc: userCourses) {
 			if(uc.getUser().getId() == user.getId()) {
 				myUserCourses.add(uc);

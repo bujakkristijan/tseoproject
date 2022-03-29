@@ -11,77 +11,80 @@
 </nav>
 
 -->
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<div class="header">
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
 
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="students" routerLinkActive="active" class="nav-link">Student list</a>
-    </li>
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professors" routerLinkActive="active" class="nav-link">Professor list</a>
-    </li>
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="courses" routerLinkActive="active" class="nav-link">Course list</a>
-    </li>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="students" routerLinkActive="active" class="nav-link">Student list</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professors" routerLinkActive="active" class="nav-link">Professor list</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="courses" routerLinkActive="active" class="nav-link">Course list</a>
+      </li>
 
-    <!--
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role.toString() == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
-    </li>
-  -->
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
-    </li>
+      <!--
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role.toString() == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
+      </li>
+    -->
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'ADMIN'" routerLink="professor-courses" routerLinkActive="active" class="nav-link">Professors on courses</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payment-list" routerLinkActive="active" class="nav-link">My payments</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payment-list" routerLinkActive="active" class="nav-link">My payments</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payed-course-list" routerLinkActive="active" class="nav-link">My payed courses</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-payed-course-list" routerLinkActive="active" class="nav-link">My payed courses</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-subscribed-course-list" routerLinkActive="active" class="nav-link">My subscribed courses</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-subscribed-course-list" routerLinkActive="active" class="nav-link">My subscribed courses</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="available-course-list" routerLinkActive="active" class="nav-link">All available courses</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="available-course-list" routerLinkActive="active" class="nav-link">All available courses</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-signed-up-test-list" routerLinkActive="active" class="nav-link">My signed up tests</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="my-signed-up-test-list" routerLinkActive="active" class="nav-link">My signed up tests</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="student-my-evaluated-test-list" routerLinkActive="active" class="nav-link">My evaluated tests</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'STUDENT'" routerLink="student-my-evaluated-test-list" routerLinkActive="active" class="nav-link">My evaluated tests</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-course-list" routerLinkActive="active" class="nav-link">My courses</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-course-list" routerLinkActive="active" class="nav-link">My courses</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-test-list" routerLinkActive="active" class="nav-link">My tests</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-test-list" routerLinkActive="active" class="nav-link">My tests</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-evaluated-test-list" routerLinkActive="active" class="nav-link">My evaluated tests</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role == 'PROFESSOR' || loggedUser.role == 'DEMONSTRATOR' || loggedUser.role == 'TEACHING_ASSISTANT'" routerLink="professor-my-evaluated-test-list" routerLinkActive="active" class="nav-link">My evaluated tests</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser != null" class="nav-link">Logged user: {{loggedUser.role}}</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser != null" class="nav-link">Logged user: {{loggedUser.surname}}</a>
+      </li>
 
-    <li class="nav-item">
-      <a *ngIf="loggedUser.role != 'SignOutRole'" (click)="signOut()" class="nav-link">Sign Out: {{loggedUser.role}}</a>
-    </li>
+      <li class="nav-item">
+        <a *ngIf="loggedUser.role != 'SignOutRole'" (click)="signOut()" class="nav-link">Sign Out: {{loggedUser.role}}</a>
+      </li>
 
-  </ul>
-</nav>
+    </ul>
+  </nav>
+</div>
+
 <td></td>
 <!-- <h1 class="text-center">{{title}}</h1> -->
-<div class="container">
+<div class="container-content">
   <router-outlet></router-outlet>
 </div>
 <footer class = "footer">

@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Test implements Serializable{
@@ -49,7 +50,7 @@ public class Test implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
-	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "test", fetch = FetchType.EAGER, cascade=CascadeType.REMOVE)
 	private List<UserTest> userTests= new ArrayList<UserTest>();
 	
